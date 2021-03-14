@@ -1,0 +1,420 @@
+ID,CPS,IL.original
+1,ADDAMS,Addams Elem School
+2,AGASSIZ,Agassiz Elem School
+3,ALCOTT ES,Alcott Elem School
+4,ALDRIDGE,Aldridge Elem School
+5,ARMOUR,Armour Elem School
+6,"ARMSTRONG, G",Armstrong G Elem IntL Studies
+7,ASHE,Ashe Elem School
+8,AUDUBON,Audubon Elem School
+9,AVALON PARK,Avalon Park Elem School
+10,AZUELA,Azuela Elem School
+11,BARNARD,Barnard Elem Comp Math & Sci Ctr
+12,BARRY,Barry Elem School
+13,BARTON,Barton Elem School
+14,BASS,Bass Elem School
+15,BATEMAN,Bateman Elem School
+16,BEAUBIEN,Beaubien Elem School
+17,BEETHOVEN,Beethoven Elem School
+18,BEIDLER,Beidler Elem School
+19,BELDING,Belding Elem School
+20,BELL,Bell Elem School
+21,BENNETT,Bennett Elem School
+22,BLAINE,Blaine Elem School
+23,BOND,Bond Elem School
+24,BOONE,Boone Elem School
+25,BOUCHET,Bouchet Elem Math & Science Acad
+26,BRADWELL,Bradwell Comm Arts & Sci Elem Sch
+27,BRENNEMANN,Brennemann Elem School
+28,BRENTANO,Brentano Elem Math & Science Acad
+29,BRIDGE,Bridge Elem School
+30,BRIGHT,Bright Elem School
+31,BRIGHTON PARK,Brighton Park Elem School
+32,"BROWN, R",Brown R Elem Community Acad
+33,BROWNELL,Brownell Elem School
+34,BRUNSON,Brunson Math & Sci Specialty Elem
+35,BUDLONG,Budlong Elem School
+36,BURBANK,Burbank Elem School
+37,BURKE,Burke Elem School
+38,BURLEY,Burley Elem School
+39,BURNHAM,Burnham Elem Inclusive Academy
+40,BURR,Burr Elem School
+41,BURROUGHS,Burroughs Elem School
+42,BYRNE,Byrne Elem School
+43,CALDWELL,Caldwell Elem Acad of Math & Sci
+44,CALMECA,Calmeca Acad Elem School
+45,CAMERON,Cameron Elem School
+46,CAMRAS,Camras Elem School
+47,CANTY,Canty Elem School
+48,CARDENAS,Cardenas Elem School
+49,CARNEGIE,Carnegie Elem School
+50,CARROLL,Carroll Elem School
+51,CARSON,Carson Elem School
+52,CARTER,Carter Elem School
+53,"CARVER , G",Carver Primary School
+54,CASALS,Casals Elem School
+55,CASSELL,Cassell Elem School
+56,CATHER,Cather Elem School
+57,CHALMERS,Chalmers Elem Specialty School
+58,CHAPPELL,Chappell Elem School
+59,CHASE,Chase Elem School
+60,CHAVEZ,Chavez Elem Multicultural Acad Ct
+61,CHOPIN,Chopin Elem School
+62,"CLARK, G",Clark  G R Elem School
+63,CLAY,Clay Elem School
+64,CLEVELAND,Cleveland Elem School
+65,CLINTON,Clinton Elem School
+66,CLISSOLD,Clissold Elem School
+67,COLEMON,Colemon J Elem Academy
+68,COLES,Coles Elem Language Academy
+69,COLUMBIA EXPLORERS,Columbia Explorers Elem Academy
+70,COLUMBUS,Columbus Elem School
+71,COOK,Cook Elem School
+72,COONLEY,Coonley Elem School
+73,COOPER,Cooper Elem Dual Language Academy
+74,CORKERY,Corkery Elem School
+75,COURTENAY,Courtenay Elem Language Arts Ctr
+76,CROWN,Crown Elem Comm Acd Fine Arts Ctr
+77,CUFFE,Cuffe Math-Sci Tech Elem Academy
+78,CULLEN,Cullen Elem School
+79,CURTIS,Curtis Elem School
+80,DALEY,Daley Elem Academy
+81,DARWIN,Darwin Elem School
+82,"DAVIS, N",Davis N Elem School
+83,DAWES,Dawes Elem School
+84,DE PRIEST,Depriest Elem School
+85,DENEEN,Deneen Elem School
+86,DETT,Dett Elem School
+87,DEVER,Dever Elem School
+88,DEWEY,Dewey Elem Academy of Fine Arts
+89,DIEGO,De Diego Elem Community Academy
+90,DIRKSEN,Dirksen Elem School
+91,DIXON,Dixon Elem School
+92,DOOLITTLE,James R Doolittle Academy
+93,DORE,Dore Elem School
+94,DRAKE,Drake Elem School
+95,DUBOIS,Dubois Elem School
+96,DULLES,Dulles Elem School
+97,DUNNE TECH ACAD,Dunne Technology Acad Elem Sch
+98,DURKIN PARK,Durkin Park Elem School
+99,DVORAK TECH ACAD,Dvorak Technology Acad Elem Sch
+100,EARHART,Earhart Elem Opt for Knowl School
+101,EARLE,Earle Elem School
+102,EBERHART,Eberhart Elem School
+103,EBINGER,Ebinger Elem School
+104,EDGEBROOK,Edgebrook Elem School
+105,EDISON PARK,Edison Park Elem School
+106,EDWARDS,Edwards Elem School
+107,ELLINGTON,Ellington Elem School
+108,ESMOND,Esmond Elem School
+109,EVERETT,Everett Elem School
+110,EVERS,Evers Elem School
+111,FAIRFIELD,Fairfield Elem Academy
+112,FALCONER,Falconer Elem School
+113,FARADAY,Faraday Elem School
+114,FARNSWORTH,Farnsworth Elem School
+115,FERNWOOD,Fernwood Elem School
+116,FINKL,Finkl Elem School
+117,FISKE,Fiske Elem School
+118,FORT DEARBORN,Fort Dearborn Elem School
+119,FOSTER PARK,Foster Park Elem School
+120,FULLER,Fuller Elem School
+121,FULTON,Fulton Elem School
+122,FUNSTON,Funston Elem School
+123,GALE,Gale Elem Community Academy
+124,GALLISTEL,Gallistel Elem Language Academy
+125,GARVEY,Garvey  M Elem School
+126,GARVY,Garvy  J Elem School
+127,GILLESPIE,Gillespie Elem School
+128,GOETHE,Goethe Elem School
+129,GOUDY,Goudy Technology Academy
+130,GRAHAM,Graham  A Elem School
+131,"GRAY, W",Gray Elem School
+132,GREELEY,Greeley Elem School
+133,GREEN,Green  W Elem School
+134,GREENE,Greene N Elem School
+135,GREGORY,Gregory Math & Sci Elem Academy
+136,GRESHAM,Gresham Elem School
+137,GRIMES,Grimes Elem School
+138,GRISSOM,Grissom Elem School
+139,HAINES,Haines Elem School
+140,HALE,Hale Elem School
+141,HALEY,Haley Elem Academy
+142,HAMILTON,Hamilton Elem School
+143,HAMLINE,Hamline Elem School
+144,HAMMOND,Hammond Elem School
+145,HAMPTON,Hampton Elem Fine & Perf Arts Sch
+146,HANSON PARK,Hanson Park Elem School
+147,HARTE,Bret Harte Elem School
+148,HARVARD,Harvard Elem School
+149,HAUGAN,Haugan Elem School
+150,HAY,Hay Elem Community Academy
+151,HAYT,Hayt Elem School
+152,HEALY,Healy Elem School
+153,HEARST,Hearst Elem School
+154,HEDGES,Hedges Elem School
+155,HEFFERAN,Hefferan Elem School
+156,HENDERSON,Henderson Elem School
+157,HENDRICKS,Hendricks Elem Community Academy
+158,HENRY,Henry Elem School
+159,HEROES,Ninos Heroes Elem Academic Ctr
+160,HERZL,Herzl Elem School
+161,HIBBARD,Hibbard Elem School
+162,HIGGINS,Higgins Elem Community Academy
+163,HINTON,
+164,HITCH,Hitch Elem School
+165,HOLDEN,Holden Elem School
+166,HOLMES,Holmes Elem School
+167,HOWE,Howe Elem School
+168,HOYNE,Hoyne Elem School
+169,"HUGHES, C",Hughes  C Elem School
+170,"HUGHES, L",Hughes L Elem School
+171,HURLEY,Hurley Elem School
+172,IRVING,Irving Elem School
+173,"JACKSON, M",Jackson M Elem School
+174,JAHN,Jahn Elem School
+175,JAMIESON,Jamieson Elem School
+176,JENSEN,Jensen Elem Scholastic Academy
+177,JOHNSON,Johnson Elem School
+178,JOPLIN,Joplin Elem School
+179,JORDAN,Jordan Elem Community School
+180,JUNGMAN,Jungman Elem School
+181,KANOON,Kanoon Elem Magnet School
+182,KELLOGG,Kellogg Elem School
+183,KILMER,Kilmer Elem School
+184,KINZIE,Kinzie Elem School
+185,KIPLING,Kipling Elem School
+186,KOZMINSKI,Kozminski Elem Community Academy
+187,LANGFORD,Langford A Elem School
+188,LARA,Lara Elem Academy
+189,LAVIZZO,Lavizzo Elem School
+190,LAWNDALE,Lawndale Elem Community Academy
+191,LEE,Lee Elem School
+192,LELAND,Leland Elem School
+193,LEWIS,Lewis Elem School
+194,LIBBY,Libby Elem School
+195,LINCOLN,Lincoln Elem School
+196,LITTLE VILLAGE,Little Village Elem School
+197,LLOYD,Lloyd Elem School
+198,"LOCKE, J",Locke  J Elem School
+199,LOGANDALE,Avondale - Logandale Elementary School
+200,LORCA,Garcia Lorca Elem School
+201,LOVETT,Lovett Elem School
+202,LOWELL,Lowell Elem School
+203,LOZANO,Lozano Elem Bilingual & Intl Ctr
+204,LYON,Lyon Elem School
+205,MADISON,Madison Elem School
+206,MANIERRE,Manierre Elem School
+207,MANN,Mann Elem School
+208,MARQUETTE,Marquette Elem School
+209,MARSH,Marsh Elem School
+210,MASON,Mason Elem School
+211,MAYER,Mayer Elem School
+212,MAYS,Mays Elem Academy
+213,MCAULIFFE,McAuliffe Elem School
+214,MCCLELLAN,McClellan Elem School
+215,MCCORMICK,McCormick Elem School
+216,MCCUTCHEON,McCutcheon Elem School
+217,MCDOWELL,McDowell Elem School
+218,MCKAY,McKay Elem School
+219,MCNAIR,McNair Elem School
+220,MCPHERSON,McPherson Elem School
+221,MELODY,Melody Elem School
+222,METCALFE,Metcalfe Elem Community Academy
+223,MIRELES,Mireles Elem Academy
+224,MITCHELL,Mitchell Elem School
+225,MOLLISON,Mollison Elem School
+226,MONROE,Monroe Elem School
+227,MOOS,Moos Elem School
+228,MORRILL,Morrill Elem Math & Sci School
+229,MORTON,Morton Elem Career Academy
+230,MOUNT GREENWOOD,Mount Greenwood Elem School
+231,MOUNT VERNON,Mount Vernon Elem School
+232,MOZART,Mozart Elem School
+233,MURPHY,Murphy Elem School
+234,NASH,Nash Elem School
+235,NATIONAL TEACHERS,National Teachers Elem Academy
+236,NEIL,Neil Elem School
+237,NETTELHORST,Nettelhorst Elem School
+238,NEW FIELD,New Field Elem School
+239,NEW SULLIVAN,Sullivan Elem School
+240,NICHOLSON TECH ACAD,Nicholson Technology Acad Elem Sch
+241,NIGHTINGALE,Nightingale Elem School
+242,NIXON,Nixon Elem School
+243,NOBEL,Nobel Elem School
+244,NORWOOD PARK,Norwood Park Elem School
+245,OGDEN,Ogden Elem School
+246,OGLESBY,Oglesby Elem School
+247,O'KEEFFE,OKeeffe Elem School
+248,ONAHAN,Onahan Elem School
+249,ORIOLE PARK,Oriole Park Elem School
+250,ORTIZ DE DOMINGUEZ,Ortiz De Dominguez Elem School
+251,OTIS,Otis Elem School
+252,O'TOOLE,OToole Elem School
+253,OWENS,Owen Elem Scholastic Academy
+254,PALMER,Palmer Elem School
+255,PARK MANOR,Park Manor Elem School
+256,PARKER,Parker Elem Community Academy
+257,PARKSIDE,Parkside Elem Community Academy
+258,PASTEUR,Pasteur Elem School
+259,PECK,Peck Elem School
+260,PEIRCE,Peirce Elem Intl Studies School
+261,PENN,Penn Elem School
+262,PEREZ,Perez Elem School
+263,PERSHING,Pershing Elem Humanities Magnet
+264,PETERSON,Peterson Elem School
+265,PICCOLO,Piccolo Elem Specialty School
+266,PICKARD,Pickard Elem School
+267,PILSEN,Pilsen Elem Community Academy
+268,PIRIE,Pirie Elem Fine Arts & Academic C
+269,PLAMONDON,Plamondon Elem School
+270,PORTAGE PARK,Portage Park Elem School
+271,POWELL,Powell Elem Paideia Comm Academy
+272,PRESCOTT,Prescott Elem School
+273,PRIETO,Prieto Math-Science Elem Sch
+274,PRITZKER,Pritzker Elem School
+275,PRUSSING,Prussing Elem School
+276,PULASKI,Pulaski Intl Sch of Chicago
+277,PULLMAN,Pullman Elem School
+278,RANDOLPH,Randolph Elem School
+279,RAVENSWOOD,Ravenswood Elem School
+280,RAY,Ray Elem School
+281,REAVIS,Reavis Elem Math & Sci Spec Schl
+282,REILLY,Reilly Elem School
+283,REINBERG,Reinberg Elem School
+284,REVERE,Revere Elem School
+285,ROBINSON,Robinson Elem School
+286,ROGERS,Rogers Elem School
+287,RUGGLES,Ruggles Elem School
+288,RUIZ,Ruiz Elem School
+289,RYDER,Ryder Elem Math & Sci Spec School
+290,SADLOWSKI,
+291,SANDOVAL,Sandoval Elem School
+292,SAUGANASH,Sauganash Elem School
+293,SAWYER,Sawyer Elem School
+294,SAYRE,Sayre Elem Language Academy
+295,SCAMMON,Scammon Elem School
+296,SCHMID,Schmid Elem School
+297,SCHUBERT,Schubert Elem School
+298,SEWARD,Seward Elem Communication Arts Ac
+299,SHERMAN,Sherman Elem School
+300,SHERWOOD,Sherwood Elem School
+301,SHIELDS,Shields Elem School
+302,SHOESMITH,Shoesmith Elem School
+303,SHOOP,Shoop Math-Sci Tech Elem Academy
+304,SKINNER,Skinner Elem School
+305,SMITH,Smith  W Elem School
+306,SMYSER,Smyser Elem School
+307,SMYTH,Smyth  J Elem School
+308,SOLOMON,Solomon Elem School
+309,SOUTH LOOP,South Loop Elem School
+310,SPENCER TECH ACAD,Spencer Technology Acad Elem Sch
+311,SPRY,Spry Elem Community School
+312,STAGG,Stagg Elem School
+313,STEVENSON,Stevenson Elem School
+314,STOWE,Stowe Elem School
+315,SUMNER,Sumner Elem Math & Sci Comm Acad
+316,SUTHERLAND,Sutherland Elem School
+317,SWIFT,Swift Elem Specialty School
+318,TALCOTT,Talcott Elem School
+319,TANNER,Tanner Elem School
+320,TARKINGTON,Tarkington Elem School
+321,TAYLOR,Taylor Elem School
+322,TELPOCHCALLI,Telpochcalli Elem School
+323,"THORP, J",Thorp  J N Elem School
+324,TILL,Till Elem Math & Science Academy
+325,TILTON,Tilton Elem School
+326,TONTI,Tonti Elem School
+327,TWAIN,Twain Elem School
+328,VOLTA,Volta Elem School
+329,VON LINNE,Linne Elem School
+330,WACKER,Wacker Elem School
+331,WADSWORTH,Wadsworth Elem School
+332,WALSH,Walsh Elem School
+333,"WARD, J",Ward  J Elem School
+334,"WARD, L",Ward  L Elem School
+335,WARREN,Warren Elem School
+336,"WASHINGTON, G",Washington  G Elem School
+337,"WASHINGTON, H",Washington  H Elem School
+338,WATERS,Waters Elem School
+339,WEBSTER,Webster Elem School
+340,"WELLS, I",Wells Preparatory Elem Academy
+341,WENTWORTH,Wentworth Elem School
+342,WEST PARK,West Park Elem Academy
+343,WEST RIDGE,West Ridge Elem School
+344,WESTCOTT,Westcott Elem School
+345,WHISTLER,Whistler Elem School
+346,WHITE,White Elem Career Academy
+347,WHITNEY,Whitney Elem School
+348,WHITTIER,Whittier Elem School
+349,WILDWOOD,Wildwood Elem School
+350,WOODSON,Woodson South Elem School
+351,YATES,Yates Elem School
+352,YOUNG,Young Elem School
+353,ZAPATA,Zapata Elem Academy
+,,Sheridan Elem Math & Science Acad
+,,Shields Middle School
+,,Evergreen Academy Elem School
+,,Field Elem School
+,,Franklin Elem Fine Arts Center
+,,Frazier Perspectives Magnet ES
+,,Galileo Elem Math & Sci Schol Acd
+,,Gary Elem School
+,,Gunsaulus Elem Scholastic Academy
+,,Hawthorne Elem Scholastic Academy
+,,Hernandez Middle School
+,,Hope Learning Academy
+,,Inter-American Elem Magnet School
+,,Jackson A Elem Language Acad
+,,Keller Elem Gifted Magnet School
+,,Kellman Corporate Community Elem
+,,Kershaw Elem School
+,,King Academy of Social Justice
+,,LaSalle Elem Language Academy
+,,LaSalle II Lang Acad Elem Sch
+,,Lenart Elem Regional Gifted Ctr
+,,Madero Middle School
+,,Marine Leadership Academy - Ames
+,,McDade Elem Classical School
+,,Murray Elem Language Academy
+,,Newberry Elem Math & Science Acad
+,,North River Elem School
+,,Northwest Middle School
+,,Orozco Elem Fine Arts & Sciences
+,,Owens Community Academy ES
+,,Plato Learning Acad  Elem School
+,,Poe Elem Classical School
+,,Richardson Middle School
+,,Sabin Elem Magnet School
+,,Salazar Elem Bilingual Center
+,,Saucedo Elem Scholastic Academy
+,,Skinner North Elem Sch
+,,South Shore Fine Arts Elem Sch
+,,Southeast Area Elementary School
+,,STEM Magnet Academy Elem
+,,Stone Elem Scholastic Academy
+,,Suder Montessori Elem Magnet Schl
+,,Talman Elem School
+,,Thorp  O A Elem Scholastic Acad
+,,Turner-Drew Elem Language Academy
+,,Vanderpoel Elem Magnet School
+,,Woodlawn Elem Community School
+,,Albany Park Multicultural Elem
+,,Ariel Elem Community Academy
+,,Ashburn Community Elem School
+,,Beasley Elem Magnet Academic Ctr
+,,Belmont-Cragin Elem School
+,,Black Magnet Elem School
+,,Brown  W Elem School
+,,Burnside Elem Scholastic Academy
+,,Charles J Sahs Elem School
+,,Chicago Academy Elem School
+,,Christopher Elem School
+,,Claremont Academy Elem School
+,,Davis M Magnet Elem School
+,,Decatur Classical Elem School
+,,Disney Elem Magnet School
+,,Disney II Elem School
+,,Drummond Elem School
+,,Edison Elem Regional Gifted Cntr
+,,Ericson Elem Scholastic Academy
