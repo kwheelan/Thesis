@@ -1,0 +1,1347 @@
+---
+title: "Thesis"
+author: "Katrina Wheelan"
+date: "April 15, 2021"
+header-includes:
+    \usepackage{float}
+output:
+  pdf_document:
+    extra_dependencies: ["float"] 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=F, message=F, fig.pos = "H")
+```
+
+```{r, include=F}
+
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(tidycensus) #interacts with census API
+library(sf) #shapefile package
+library(ggplot2)
+library(viridis) #for nice scaled geo plots
+library(lwgeom)
+library(reldist) #for gini index calculation
+library(ape) #spatio-temporal methods
+library(fitdistrplus) #fitting continuous dist to binned data
+library(gglorenz) #plot Lorenz curve
+library(ggfortify) #for diagnostic plots
+library(gridExtra) # for nice side-by-side plots
+library(lemon) # to share legends
+
+root = "~/Desktop/Thesis"
+
+sample =read.csv("~/Desktop/Thesis/sample.txt")
+
+elem_boundaries = st_read("~/Desktop/Thesis/Boundaries/SY19-20_elem_boundaries/19-20_boundaries.shx")
+elem_boundaries = elem_boundaries %>% st_transform("NAD83")
+
+elem.df = read.csv("~/Desktop/Thesis/elem_df.csv")
+st_geometry(elem.df) = elem_boundaries$geometry
+
+elem.df.2009 = read.csv("~/Desktop/Thesis/2009_elem_df.csv")
+bounds2009 = st_read("~/Desktop/Thesis/Boundaries/SY08-09_elem_boundaries/08-09_boundaries.shx")
+st_geometry(elem.df.2009) = bounds2009$geometry
+```
+
+
+## Abstract
+
+## Acknowledgements
+
+## 1. Introduction
+
+Social scientists have done extensive research on the effects of wealth and racial disparities between districts on lifetime outcomes, but there has been comparatively little research on how intra-school disparities affect educational outcomes. This thesis focuses on precisely these distributional effects. In this project, I investigate the extent to which the income and racial make-ups of schools and the neighborhoods they serve affect the distribution of outcomes over time. In essence, I ask whether traditional factors of positive educational outcomes -- like an influx of wealth to a neighborhood -- mask adverse distributional effects. I chose to focus on Chicago Public Schools because it comprises a single school district and because there are readily available and extensive data. Chicago schools are also notorious for their racial homogeneity; in more than half of Chicago public elementary schools, at least 90% of the students identify as the same race.\footnote{Calculated from Illinois Board of Education Data}
+
+To answer these questions, I use several high dimensional data sources. I rely heavily on the Illinois Department of Education data for each public elementary school in Chicago. These data include detailed demographic data, standardized testing scores, and other indicators at the school-level. I also use American Community Survey data, which provides detailed metrics about the characteristics of each Census tract. I employ spatio-temporal methods and traditional linear methods to analyze the effects of racial and income disparities on the distribution of testing outcomes across space (school zones) and time (school years). 
+
+
+## 2. Literature Review
+
+## 3. Data Discussion
+
+```{r, include =F}
+sum(elem.df.2009$total.students, na.rm=T)
+sum(elem.df$total.students, na.rm=T)
+
+sum(elem.df.2009$population, na.rm=T)
+sum(elem.df$population, na.rm=T)
+```
+
+I combined and aggregated several sources to generate a high-dimensional dataframe containing the relevant demographic and student performance data. My final dataframe contains 96 variables across `r dim(elem.df.2009)[1]` schools in 2009 and `r dim(elem.df)[1]` schools in 2019. This represents 165,079 students in 2009 and 192,617 students in 2019, as well as 2,715,471 residents in 2009 and 2,714,595 residents in 2019.
+
+### 3.1 Demographic Data
+
+For this analysis, I focus on data from a 30 year period, comparing results from 1999, 2009, and 2019.
+I rely on several public data sources. The Illinois Board of Education provides public data on annual school "report cards," including information about school demographics and aggregate test scores. The test score data includes the number of students in each grade who test at each proficiency level. After the 2013-2014 academic year, Illinois transitioned from the ISAT (Illinois Standardized Assessment Test) to the PARCC (Partnership for Assessment of Readiness for College and Career), which was in turn replaced by the IAR (Illinois Assessment of Readiness) in 2019. All three exams have multiple proficiency levels, but the ISAT has only four levels, while the PARCC and IAR have five levels (did not meet, partially met, approached, met, and exceeded expectation). Although these test score data are at the grade-level, the demographic data is exclusively at the school level. I supplement this state-provided data with public shape files from the Chicago Public Schools (CPS), which contain the geographic boundaries for public elementary school neighborhoods. 
+
+Since the school demographics often differ from the neighborhood demographics, I also use the decennial U.S. Census and the American Community Survey (ACS) for neighborhood demographics. The ACS is a longer form version of the Census questionaire, and the U.S. Census Bureau administers it to a random sample of American households every year. These annual results are aggregated over five year periods. Unlike the U.S. Census, the ACS collects information about individual and household income. 
+
+I use block-level data from the decennial Census, and I use block-group and tract level data from the ACS. A Census block is a highly granular geographic division (the United States is split into more than seven million Census blocks). A block-group typically consists of 39 Census blocks and between 600 and 3,000 residents. Census tracts are slightly larger and contain one or several block groups with an optimal population of 4,000 residents. Table 1 details the specific data sources and their granularity.
+
+
+\begin{center}
+\begin{table}[H]
+\begin{tabular}{ c c c c }
+\hline
+\hline
+  \\
+ Variable & Source & Time Scale & Space Scale  \\ 
+
+ \hline
+ \\
+ Population & Decennial Census & 10 years & block\\
+ Race/ethnicity of residents & Decennial Census & 10 years & block\\
+ Median rent & ACS & 5 years & block group\\
+ Median household income & ACS & 5 years & block group\\
+ Personal income category & ACS & 5 years & tract\\
+ Proportion of home owners & ACS & 5 years & tract\\
+ School race/ethnicity proportions & ISBE & 1 year & school boundary\\
+ School low income/English learner proportions & ISBE & 1 year & school boundary\\
+ School test scores by grade and subject & ISBE & 1 year & school boundary\\
+ Elementary school boundaries & CPS & 1 year & school boundary\\
+ 
+ \hline
+\end{tabular}
+\caption{Source Data Details}
+\label{table:1}
+\end{table}
+\end{center}
+
+Although the Census classifies "Hispanic" as an ethnic identity, the Illinois Board of Education classifies "Hispanic" as a racial category. To reconcile this, I classify any individual who identifies as Hispanic in the Census as Hispanic, while White, Black, Asian, and other racial categories include individuals who identify with those racial categories and self-describe as "non-Hispanic" on the Census.
+
+### 3.2 School Data
+
+Most Chicago elementary schools limit enrollment to their elementary school boundaries, but some schools are open enrollment or magnet schools. Magnet schools do not have attendance boundaries, so their student body may not reflect the demographics of the neighborhood as a whole.
+
+### 3.3 Response Rates
+
+The annual response rate for the ACS is consistently above 92% with the exception of 2019, when the government shutdown paused surveytaking. The response rate in 2019 was 86%.\footnote{https://www.census.gov/acs/www/methodology/sample-size-and-data-quality/response-rates/} Non-response to the decennial Census is penalized by law, so its (pre-COVID) reponse rates have been consistently above 99%.\footnote{source} Standardized test participation is mandated for public school students by the state of Illinois, with few exceptions (such as significant cognitive disabilities). As a result, the student participation rate is close to comprehensive; in 2019, the mean participation rate across CPS elementary schools was 97.19%.\footnote{Calculated from ISBE data}
+
+
+## 4. Methodology
+
+### 4.1 Weighting Demographic Data
+
+I investigate the role of location, racial homogeneity, income inequality, and other demographic factors in determining the distribution of student outcomes. In order to use demographic variables, I had to reconcile the geographic boundaries of the Census block, block group, and tract level data with the elementary school boundaries. In Cook County, Illinois, there are nearly 100,000 blocks, distributed among 356 elementary school boundaries. Specifically, for my geographic area of interest:
+
+$$
+\begin{aligned}
+m &= \text{number of blocks} = 99,042\\
+n &= \text{number of block groups} = 3,993\\
+t &= \text{number of tracts} = 1,319\\
+s &= \text{number of schools} = 356\\
+\end{aligned}
+$$
+
+Each Census block is fully contained in a single school boundary, so I aggregated the block-level demographics to the elementary school boundary level. However, most Census block groups and tracts are not fully contained in a single school boundary. To get the appropriate school boundary level data, I used block populations to weight the block group and tract level data. 
+
+To transform the block group tract level data to elementary school boundary level data, I contructed matrices $\bf{POP(BG)}$ and $\bf{POP(tract)}$. To contruct these matrices, I use matrix $\bf{Z}$ to hold information on the blocks contained in each boundary. Row $k$ of the $\bf{Z}$ matrix will contain a 1 in column $i$ when boundary $k$ contains block $i$. Similarly, row $i$ of the $\bf{X}$ matrix will contain a 1 in column $j$ when block group $j$ contains block $i$, and row $i$ of the $\bf{Y}$ matrix will contain a 1 in column $p$ when tract $p$ contains block $i$. The center matrix in both products below are diagonal matrices containing the population of block $i$ in row and column $i$. 
+
+Multiplying as below yields $s \times n$ and $s \times t$ matrices, which we will use to weight block group and tract level data, respectively. Entry $\bf{POP}({BG})_{kj}$ gives the population of the overlapping area between block group $j$ and school boundary $k$. Similarly, $\bf{POP}({tract})_{kp}$ gives the population of the overlapping area between tract $p$ and school boundary $k$.
+
+\begin{equation}
+\bf{POP(\text{BG})}_{s \times n} =
+\begin{pmatrix}
+z_{11} & \dots & z_{1m} \\
+\vdots & & \vdots \\
+z_{s1} & \dots & z_{sm}\\
+\end{pmatrix}
+\begin{pmatrix}
+pop_{1} & \dots & 0 \\
+\vdots & \ddots & \vdots \\
+0 & \dots & pop_m\\
+\end{pmatrix}
+\begin{pmatrix}
+x_{11} & \dots & x_{1n} \\
+\vdots & & \vdots \\
+x_{m1} & \dots & x_{mn}\\
+\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+\bf{POP(\text{tract})}_{s \times t} =
+\begin{pmatrix}
+z_{11} & \dots & z_{1m} \\
+\vdots & & \vdots \\
+z_{s1} & \dots & z_{sm}\\
+\end{pmatrix}
+\begin{pmatrix}
+pop_{1} & \dots & 0 \\
+\vdots & \ddots & \vdots \\
+0 & \dots & pop_m\\
+\end{pmatrix}
+\begin{pmatrix}
+y_{11} & \dots & y_{1t} \\
+\vdots & & \vdots \\
+y_{m1} & \dots & y_{mt}\\
+\end{pmatrix}
+\end{equation}
+
+$$
+\begin{aligned}
+\text{Where: }\\
+pop_i &= \text{Population of block }i\\
+z_{ki} &=  \begin{cases} 
+      0 & \text{if block }i\text{ not in school boundary }k\\
+      1 & \text{if block }i\text{ in school boundary }k
+   \end{cases}\\
+x_{ij} &=  \begin{cases} 
+      0 & \text{if block }i\text{ not in block group }j\\
+      1 & \text{if block }i\text{ in block group }j
+   \end{cases}\\
+y_{ip} &=  \begin{cases} 
+      0 & \text{if block }i\text{ not in tract }p\\
+      1 & \text{if block }i\text{ in tract }p
+   \end{cases}\\
+\end{aligned}
+$$
+
+I use the $\bf{POP(BG)}$ matrix to find the weighted average of the block group variables median household income and median rent. I multiply the population matrix with the vector of block level data (income and rent), and then I weight the product by the inverse of the population of the area contained in the school boundary. This yields the weighted mean of these variables for each school boundary.
+
+$$
+\begin{aligned}
+\bf{INCOME}_{s \times 1} &=  
+\bf{{POP(BG)}}
+\begin{pmatrix}
+income_1 \\
+\vdots\\
+income_n\\
+\end{pmatrix}
+\begin{pmatrix}
+\frac{1}{\sum_{i \in school_1}pop_i} & \dots & 0\\ 
+\vdots & \ddots & \vdots\\
+0 & \dots & \frac{1}{\sum_{i \in school_s}pop_i}\\
+\end{pmatrix}\\
+\bf{RENT}_{s \times 1} &= 
+\bf{{POP(BG)}}
+\begin{pmatrix}
+rent_1 \\
+\vdots\\
+rent_n\\
+\end{pmatrix}
+\begin{pmatrix}
+\frac{1}{\sum_{i \in school_1}pop_i} & \dots & 0\\ 
+\vdots & \ddots & \vdots\\
+0 & \dots & \frac{1}{\sum_{i \in school_s}pop_i}\\
+\end{pmatrix}
+\end{aligned} 
+$$
+
+The tract-level variables are all counts (number of residents at each income level and number of residents who own homes). As a result, we need to contruct a weighting matrix slightly differently. We will scale $\bf{POP(tract)}$ with the population of each tract to get the proportion of residents living in each block of the tract. We'll call this new weight matrix $\bf{W}$.
+
+
+$$
+\begin{aligned}
+\bf{W}_{s \times t} &= \bf{POP(tract)} 
+\begin{pmatrix}
+f(1) & \dots & 0 \\
+\vdots & \ddots & \vdots \\
+0 & \dots & {f(t)}\\
+\end{pmatrix}\\
+f(p) &= \begin{cases}
+  \frac{1}{\sum_{i \in \{1, ... n\}} \bf{POP(tract)}_{ip}} & \text{if }\sum_{i \in \{1, ... t\}} \bf{POP(tract)}_{ip} \neq 0\\
+  0 & \text{if }\sum_{i \in \{1, ... t\}} \bf{POP(tract)}_{ip} = 0\\
+  \end{cases}\\
+\end{aligned}
+$$
+
+Then, we can weight the tract-level demographics, like the number of homeowners, as below:
+
+$$
+\begin{aligned}
+\bf{HOMEOWNERS} &=  
+\bf{W}
+\begin{pmatrix}
+homeowners_1 \\
+\vdots\\
+homeowners_t\\
+\end{pmatrix}
+\end{aligned}
+$$
+This yields a an $s \times 1$ matrix with an estimate for the number of homeowners in each elementary school boundary. We can divide this result by a vector of total residents in each boundary (which we calculate similarly). 
+
+### 4.2 Measuring Racial Homogeneity
+
+I considered two metrics to quantify racial homogeneity. First, I considered a Chi-squared statistic to compare a school's racial split to the Chicago Public School overall racial split. This metric essentially quantifies a school's deviation from the null distribution, but such a deviation does not necessarily mean greater racial homogeneity. I do not ultimately use this metric in my final analysis.
+
+I also consider a second metric: the proportion of students who belong to the largest racial group in a school. This metric, lg, is rigorously defined below for school $s$ across all racial classifications $R$:
+
+\begin{equation}
+lg_s = argmax_{i \in R}\{race.prop_{si}\}
+\end{equation}
+
+### 4.3 Measuring Income Inequality
+
+Creating a metric for income inequality in a school boundary created two significant challenges: approximating a continuous distribution from discrete, binned data; and defining a measure of disparity within this approximated distribution. The table below details the binned categorical data, already transformed from the tract to the school boundary level. 
+
+
+  \begin{table}[H]
+  \begin{center}
+  \begin{tabular}{ c c }
+  \hline
+  \hline
+    \\
+   Income Range & Mean Proportion across School Boundaries  \\ 
+  
+   \hline
+   \\
+   \$0 - \$10k & 0.163 \\
+   \$10 - \$15k & 0.083 \\
+   \$15k - \$25k & 0.144 \\
+   \$25k - \$35k & 0.107 \\
+   \$30k - \$50k & 0.102 \\
+   \$50k - \$65k & 0.075 \\
+   \$65k - \$75k & 0.030 \\
+   \$75k+ & 0.123 \\
+   \hline
+  \end{tabular}
+  \caption{Personal Income}
+  \label{table:2}
+\end{center}
+\end{table}
+
+In order to meaure income inequality, we need a continuous series of income data. In order to transform the binned data into a continuous distribution, I used the \verb!fitdistrplus! R package, which allows a user to fit a univariate distribution to "censored" data. The package's relevant function uses the Nelder-Mead method to optimize the distributions' parameters for maximum log-likelihood given the binned data.\footnote{https://www.rdocumentation.org/packages/fitdistrplus/versions/1.1-3/topics/fitdistcens} Since income levels tend to follow a log-normal distribution, I fit a log-normal distribution. I also fit a gamma distribution as a sensitivity test on the inequality metric. Once I had the continuous distribution, I applied two metrics for disparity: standard deviation and the Gini coefficient. 
+
+The Gini coefficient measures half the relative mean absolute difference between every two values in a dataset, which is the average pairwise distance between sets of two points, divided by the overall mean. The denominator for the mean absolute difference is $n^2$ because there are $n^2$ pairs of values with resampling. Thus:
+
+\begin{equation}
+Gini = \frac{1}{2} \cdot \frac{\text{mean difference}}{\text{arithmetic mean}} = 
+\frac{\sum^n_{i=1} \sum^n_{j=1} |x_i - x_j|}{2n^2 \bar{x}}
+\end{equation}
+
+Equation 4 also has a graphical equivalent in the Lorenz Curve. The Lorenz Curve shows cumulative income share of total income on the y-axis that is held by the poorest x percent of the population. A perfectly equal society would follow the line $y=x$, where, for instance, the poorest 80% of the population holds 80% of the total income. The Gini coefficient equals the area between a dataset's Lorenz curve and the line of equality (in blue below) divided by the total area under the line of equality (the blue and green areas together). A perfectly equal society has a Gini ceofficient of 0, and a perfectly unequal society (where one individual holds all the income) has a Gini coefficient of 1. 
+
+```{r echo=FALSE, message=F, warning=F}
+
+ggplot() +
+  geom_area(data=data.frame("Population"=c(0,1), "Income"=c(0,1)), aes(x=Population, y=Income), fill="forestgreen") +
+  stat_lorenz(data = sample, aes(income), col="blue", geom="polygon", fill="blue") + 
+  stat_lorenz(data = sample, aes(income), col="yellow", geom="line") + 
+  ggtitle("Lorenz Curve and Gini Coefficient")
+```
+
+
+### 4.4 Measuring Disparities in Student Outcomes
+
+Unfortunately, the most granular standardized testing data I could analyze was also binned data. I use math and English language arts (ELA) test scores from third and fifth grade students. The scores are binned by proficiency level. There were four levels before 2014, and there have been five levels since. The levels do not have equal bin size. See the cutoffs below for the 3rd grade ELA exam in 2019:
+
+
+  \begin{table}[H]
+  \begin{center}
+  \begin{tabular}{ c c c }
+  \hline
+  \hline
+    \\
+   Proficiency Level & Lower Boundary & Upper Boundary  \\ 
+  
+   \hline
+   \\
+   Did not meet expectations & 650 & 700 \\
+   Partially met expectation & 700 & 725 \\
+   Approached expectations & 725 & 750 \\
+   Met expectations & 750 & 786 \\
+   Exceeded expectations & 786 & 850 \\
+   \hline
+  \end{tabular}
+  \caption{2019 IAR Proficiency Levels}
+  \label{table:3}
+\end{center}
+\end{table}
+
+I considered several metrics to quantify the spread or disparity in test scores:
+
+1. I assigned each proficiency level a value between 1 and 5 (and 1 to 4 for pre-2014 data), representing did not meet expectations to exceeds expectations. Then, I directly calculated the standard deviation of this set of integers. Since these values are really ordinal data and since the bins are not equal sizes for these levels, this is a fairly crude method.
+
+2. I calculate a Chi-squared statistic for the distribution of proficiency levels, using the overall system-wide proficiency level proportions as the null distributions for each grade, year, and test subject. This metric essentially measures the deviation from the average distribution of proficiency levels.
+
+3. I use a similar method as with the income level data to generate a maximum likelihood continuous gamma distribution from the discrete, binned data for each school, subject, grade, and year. I then calculate the standard deviation of the continuous distribution. 
+
+### 4.5 Measuring Spatial Auto-correlation
+
+This project deals with spatio-temporal data. A key question for this type of data is the extent of spatial auto-correlation: Do schools that are geographically close perform similarly? Does this pattern remain when we control for neighborhood charactersitcs such as race and income?
+
+In order to answer these questions, I use Moran's I as a metric for the level of spatial auto-correlation. Moran's I quantifies the relationship between a single variable, $x$, with $n$ values, and pairwise geographic distances between locations $\{l_1, \dots, l_n\}$, which are incorporated in a distance weight matrix $\bf{W}$. Each entry $w_{ij}$ represents a spatial weight related to the distance between points $i$ and $j$. The diagonals on $\bf{W}$ are 0. For spatial weights, I use the inverse planar distance between a pair of school boundaries' centroids. 
+
+\begin{equation}
+\bf{W} = \begin{pmatrix}
+0 & \dots & w_{1n} \\
+\vdots & \ddots & \vdots\\
+w_{n1} & \dots & 0\\
+\end{pmatrix}, \text{  }
+w_{ij} = \frac{1}{dist(centroid_i, centroid_j)}
+\end{equation}
+
+
+Then, I use $\bf{W}$ to calculate Moran's I:
+
+\begin{equation}
+I = \big(\frac{n}{\sum_i\sum_j w_{ij}}\big)
+\frac{\sum_i\sum_j w_{ij}(x_i - \bar{x})(x_j - \bar{x})}{\sum_i (x_i-\bar{x})^2}
+\end{equation}
+
+
+
+## 5. Descriptive Statistics
+
+### 5.1 Neighborhood Demographics
+
+```{r, include=F}
+elem.df$school.black %>% sum -> total.black.students
+elem.df$school.black[elem.df$prop.school.black > 75] %>% sum / total.black.students
+
+(elem.df$school.black %>% sum(na.rm = T)) / (elem.df$total.students %>% sum(na.rm = T))
+
+(elem.df$largest.group > 90) %>% mean
+```
+
+As mentioned in the introduction, Chicago has a legacy of dramatic residential segregation. Historically, the richest and Whitest neighborhoods have been concentrated in the northern part of the city. These residental patterns have not changed dramatically over time. The plots below illustrate the median income for each and predominant racial or ethnic group in each elementary school boundary. 
+
+
+```{r, echo=F, fig.cap = "Median household income (in thousands of 2019 U.S. dollars) by elementary school boundary."}
+# Creating a function to plot district-level data
+
+
+plot.map <- function (var, title="", limits=NA, colors=NA, option = NA, direction=1, begin=0, end=1, df=elem.df) {
+  if(is.na(colors[1])){
+    fill_scale = scale_fill_viridis(direction=direction, option = option, begin=begin, end=end)
+  } else {
+    if(is.na(limits[1])){
+      limits = c(min(var, na.rm = T), mean(var, na.rm=T), max(var, na.rm=T))
+    }
+    fill_scale = scale_fill_gradient2(high=colors[1], 
+                                      low=colors[3], 
+                                      mid=colors[2], 
+                                      midpoint=limits[2],
+                                      limits= c(limits[1],limits[3])
+                                      )
+  }
+  ggplot(df, aes(fill = var), color = "White") +
+    geom_sf() +
+    coord_sf() +  
+    fill_scale + 
+    theme(legend.title = element_blank()) + 
+    xlim(-87.85, -87.525) + ylim(41.65, 42.01)#+
+   # ggtitle(title) + 
+    #labs(subtitle ="Chicago Public Elementary School Districts (2019)",
+     #    caption = "Data Sources: 2010 US Census; IL Board of Education")
+} 
+
+grid_arrange_shared_legend(
+  plot.map(df=elem.df.2009,var = 1.2*elem.df.2009$med.income/1000, option="inferno", direction=-1) + ggtitle("2009"),
+  plot.map(var = elem.df$med.income/1000, option="inferno", direction=-1) + ggtitle("2019"),
+ncol=2)
+
+```
+
+
+```{r, echo=F, fig.cap = "Largest racial/ethnic group by elementary school boundary. The largest group is defined as the most common racial/ethnic category for residents within a school boundary."}
+
+grid_arrange_shared_legend(
+  ggplot() +
+  xlim(-87.85, -87.525) + ylim(41.65, 42.01) +
+  geom_sf(data = elem.df.2009, aes(fill = most.common.group)) + ggtitle("2009"),
+ggplot() +
+  xlim(-87.85, -87.525) + ylim(41.65, 42.01) +
+  geom_sf(data = elem.df, aes(fill = most.common.group)) + ggtitle("2019"),
+ncol=2)
+
+```
+
+```{r, include=F}
+mean(elem.df$prop.af.am[elem.df$most.common.group == "Black"]) -> x
+```
+
+
+
+### 5.2 School Demographics
+
+As a result of the stark residential segregation by race (pictured in the previous section), each neighborhood is highly homogeneous. For instance, the typical predominantly Black neighborhood is `r x`\% Black. This neighborhood homogeneity spills over into the schools. More than half of public elementary schools in Chicago have 90% or more of its students identify with the same racial/ethnic group. This effect is particularly dramatic for Black students. Although Black students only comprised about 34% of the CPS student body in 2019, more than three quarters of Black students attended a school that was at least 75% Black.
+
+```{r, include=F}
+elem.df.2009$largest.group[elem.df.2009$largest.group == 0] = NA
+elem.df$largest.group[elem.df$largest.group == 0] = NA
+```
+
+The plot below illustrates the magnitude of this homogeneity. For each district, the plot shows the proportion of students who identify with the predominant racial or ethnic group in the school. For instance, a value of 0.90 for the largest group corresponds to a school where 90% of the students identify as the same race. This metric is exactly the "largest group" metric described in equation 3 in section 4.2. The most diverse school had a "largest group" metric of `r min(elem.df$largest.group, na.rm=T)`\% in 2019, and the least diverse schools had a metric of 100\%, with complete racially homogeneous. In 2019, `r elem.df$school_nm[elem.df$largest.group > 95] %>% length` schools had a largest group of more than 95\%.
+
+\  
+
+
+```{r, echo=F, warning=F, fig.cap = "Proportion of students who identify with the predominant racial or ethnic group in the school. This is a measure of racial homogeneity that corresponds to equation 3 in section 4.2. Higher values indicate greater homogeneity."}
+
+
+#grid_arrange_shared_legend(
+#lot.map(elem.df.2009$largest.group, "Highest Proportion of Same-Race Students", option = "plasma", direction=-1, df=elem.df.2009) + ggtitle("2009"),
+plot.map(elem.df$largest.group, "Highest Proportion of Same-Race Students", option = "plasma", direction=-1, df=elem.df) 
+#+ ggtitle("2019"), ncol=2)
+```
+
+```{r, include=F}
+sum(elem.df$white)/sum(elem.df$all.races)
+sum(elem.df$school.white)/sum(elem.df$total.students, na.rm=T)
+```
+
+\newpage
+
+School demographics generally closely follow the demographics of a boundary's district, with some exceptions. In the most recent data, 31.73% of Chicago residents were White, but only 12.5% of Chicago public elementary school students were White. This could reflects both age differences (if more White Chicagoans are not school age) and any families who opt out of the public school system (and into private schools or homeschooling).
+
+```{r, echo=F, message=F, warning=F, fig.cap = "Proportion of White residents versus White students in 2019. In the most recent data, 31.73% of Chicago residents were White, but only 12.5% of Chicago public elementary school students were White."}
+grid_arrange_shared_legend(
+plot.map(elem.df$prop.white, "Proportion of White Residents", option="inferno", direction=-1) + ggtitle("White Residents"),
+plot.map(elem.df$prop.school.white/100, "Proportion of White Students", option="inferno", direction=-1, limits=c(0,1))+ ggtitle("White Students"), nrow=1)
+
+read.csv("~/Desktop/Thesis/School performance data/2009/testdata_processed.txt") -> testdata2009
+
+```
+
+
+### 5.3 School Outcomes
+
+I measure school outcomes at the grade, subject, year, and school level. As mentioned earlier, this data is only available as the proportion of students at each the proficiency level. The data come from third and fifth grade standardized test scores, collected at `r dim(elem.df)[1]` elementary schools serving a total of 192,617 students in 2019. In 2009, the data comes from `r dim(elem.df.2009)` schools serving 165,079 students.
+
+```{r}
+concat = function(list){
+  #Function to concatenate strings
+  if(length(list) == 1){
+    return (list[1])
+  }
+  return (paste(list[1], concat(list[2:length(list)]), sep=""))
+}
+
+test_category = function(subject, grade, level) {
+  return( paste( paste( paste("All.students.IAR.", subject, sep=""),
+                 paste("Level", level, sep="."), sep = "." ),
+                 paste("Grade", grade, sep="."), sep ="...") )
+}
+
+test_category_2009 = function(subject, grade, level) {
+  return( concat(c("Grade",grade,".", subject, ".", "Level", level)) )
+}
+
+test.prop = function(grade, subject, year, level){
+  if (year == 2009){
+    df = data.frame(elem.df.2009)
+    return(round(sum(df[,test_category_2009(subject, grade, level)] * df$total.students/100, na.rm=T)/sum(df$total.students, na.rm=T),2))
+  } else if(year == 2019){
+    if (subject == "Math"){
+      subject = "Mathematics"
+    }
+    df = data.frame(elem.df)
+    return(round(sum(df[,test_category(subject, grade, level)] * df$total.students/100, na.rm=T)/sum(df$total.students, na.rm=T),2))
+  }
+}
+
+
+```
+
+\begin{center}
+\begin{table}[H]
+\begin{tabular}{ c c c c c }
+\hline
+\hline
+  \\
+ Variable & Grade 3 ELA & Grade 3 Math & Grade 5 ELA & Grade 5 Math  \\ 
+\\
+ \hline
+ 2009
+ \\
+ \hline
+ \\
+ Proportion at Level 1 & `r i = 1` `r test.prop(3, "ELA", 2009, i)` & `r test.prop(3, "Math", 2009, i)` & `r test.prop(5, "ELA", 2009, i)` & `r test.prop(5, "Math", 2009, i)`\\
+ Proportion at Level 2 & `r i = 2` `r test.prop(3, "ELA", 2009, i)` & `r test.prop(3, "Math", 2009, i)` & `r test.prop(5, "ELA", 2009, i)` & `r test.prop(5, "Math", 2009, i)`\\
+ Proportion at Level 3& `r i = 3` `r test.prop(3, "ELA", 2009, i)` & `r test.prop(3, "Math", 2009, i)` & `r test.prop(5, "ELA", 2009, i)` & `r test.prop(5, "Math", 2009, i)`\\
+ Proportion at Level 4 & `r i = 4` `r test.prop(3, "ELA", 2009, i)` & `r test.prop(3, "Math", 2009, i)` & `r test.prop(5, "ELA", 2009, i)` & `r test.prop(5, "Math", 2009, i)`\\
+ 
+ \\
+ \hline
+ 2019
+ \\
+ \hline
+ \\
+  Proportion at Level 1 & `r i = 1` `r test.prop(3, "ELA", 2019, i)` & `r test.prop(3, "Math", 2019, i)` & `r test.prop(5, "ELA", 2019, i)` & `r test.prop(5, "Math", 2019, i)`\\
+ 
+  Proportion at Level 2 & `r i = 2` `r test.prop(3, "ELA", 2019, i)` & `r test.prop(3, "Math", 2019, i)` & `r test.prop(5, "ELA", 2019, i)` & `r test.prop(5, "Math", 2019, i)`\\
+ 
+  Proportion at Level 3 & `r i = 3` `r test.prop(3, "ELA", 2019, i)` & `r test.prop(3, "Math", 2019, i)` & `r test.prop(5, "ELA", 2019, i)` & `r test.prop(5, "Math", 2019, i)`\\
+ 
+  Proportion at Level 4 & `r i = 4` `r test.prop(3, "ELA", 2019, i)` & `r test.prop(3, "Math", 2019, i)` & `r test.prop(5, "ELA", 2019, i)` & `r test.prop(5, "Math", 2019, i)`\\
+  
+  Proportion at Level 5 & `r i = 5` `r test.prop(3, "ELA", 2019, i)` & `r test.prop(3, "Math", 2019, i)` & `r test.prop(5, "ELA", 2019, i)` & `r test.prop(5, "Math", 2019, i)`\\
+ \\
+ \hline
+ \hline
+\end{tabular}
+\caption{City-wide proficiency levels by year, grade, and subject. }
+\label{table:4}
+\end{table}
+\end{center}
+
+These proficiency levels vary dramatically by school. The plots below show density plots for 3rd grade math and ELA scores in 2009 and 2019. Each colored line on the plot represents a proficiency level. The density is across all schools, so the curve represents the density (y-axis) of schools having a given proportion of students (x-axis) testing at the line's proficiency level. For instance, the green line on the top, right plot shows that most schools have around 50% of its students testing at level 3 proficiency for math. The highest proficiency levels (the blue level 4 line for the 2009, and the purple level 5 line for 2019) are heavily right-skewed, which shows that very few schools have many very high preforming students. 
+
+
+```{r, echo=F, message=F, warning=F, fig.cap = "Density curves for proficiency levels. Each colored line on the plot represents a proficiency level. The density is across all schools, so the curve represents the density (y-axis) of schools having a given proportion of students (x-axis) testing at the line's proficiency level. or instance, the green line on the top, right plot shows that most schools have around 50% of its students testing at level 3 proficiency for math."}
+
+colors <- c("Level 1" = "red", "Level 2" = "orange", "Level 3" = "green", "Level 4" = "blue", "Level 5" = "purple")
+
+grid.arrange(
+
+
+ggplot() + 
+  geom_density(data = testdata2009, aes(Grade3.ELA.Level4, col="Level 4")) +
+  geom_density(data = testdata2009, aes(Grade3.ELA.Level3, col="Level 3")) +
+  geom_density(data = testdata2009, aes(Grade3.ELA.Level2, col="Level 2")) + 
+  geom_density(data = testdata2009, aes(Grade3.ELA.Level1, col="Level 1")) + 
+  labs(x = "Percent",
+       y = "Density",
+       color = "Legend") +
+  scale_color_manual(values = colors) + 
+  ggtitle("Proficiency Levels, ELA, 2009"),
+
+ggplot() + 
+  geom_density(data = testdata2009, aes(Grade3.Math.Level4, col="Level 4")) +
+  geom_density(data = testdata2009, aes(Grade3.Math.Level3, col="Level 3")) +
+  geom_density(data = testdata2009, aes(Grade3.Math.Level2, col="Level 2")) + 
+  geom_density(data = testdata2009, aes(Grade3.Math.Level1, col="Level 1")) + 
+  labs(x = "Percent",
+       y = "Density",
+       color = "Legend") +
+  scale_color_manual(values = colors) + 
+  ggtitle("Proficiency Levels, Math, 2009"), 
+
+ggplot() + 
+  geom_density(data = elem.df, aes(All.students.IAR.ELA.Level.5...Grade.3, col="Level 5")) + 
+  geom_density(data = elem.df, aes(All.students.IAR.ELA.Level.4...Grade.3, col="Level 4")) +
+  geom_density(data = elem.df, aes(All.students.IAR.ELA.Level.3...Grade.3, col="Level 3")) +
+  geom_density(data = elem.df, aes(All.students.IAR.ELA.Level.2...Grade.3, col="Level 2")) + 
+  geom_density(data = elem.df, aes(All.students.IAR.ELA.Level.1...Grade.3, col="Level 1")) + 
+  labs(x = "Percent",
+       y = "Density",
+       color = "Legend") +
+  scale_color_manual(values = colors) + 
+  ggtitle("Proficiency Levels, ELA, 2019"),
+
+ggplot() + 
+  geom_density(data = elem.df, aes(All.students.IAR.Mathematics.Level.5...Grade.3, col="Level 5")) + 
+  geom_density(data = elem.df, aes(All.students.IAR.Mathematics.Level.4...Grade.3, col="Level 4")) +
+  geom_density(data = elem.df, aes(All.students.IAR.Mathematics.Level.3...Grade.3, col="Level 3")) +
+  geom_density(data = elem.df, aes(All.students.IAR.Mathematics.Level.2...Grade.3, col="Level 2")) + 
+  geom_density(data = elem.df, aes(All.students.IAR.Mathematics.Level.1...Grade.3, col="Level 1")) + 
+  labs(x = "Percent",
+       y = "Density",
+       color = "Legend") +
+  scale_color_manual(values = colors) + 
+  ggtitle("Proficiency Levels, Math, 2019"),
+nrow =2)
+
+```
+
+\newpage
+As mentioned in the methods section, I use three metrics for score disparities: standard deviation of proficiency levels, Chi-squared statistic, and standard deviation of an interpolated continuous distribution of scores. I ultimately chose to use the Chi-squared statistic as a metric for score disparities. Its distribution is approximately log-normal, and it is a good metric for a schools variation from the default proficiency level distribution. I discuss this decision in greater depth in the Analysis section.
+
+\  
+
+```{r, echo=F, message=F, warning=F, fig.cap = "Density plots for response variables measuring spread of student scores" }
+
+grid.arrange(
+ggplot(data = elem.df) + 
+  geom_density(aes(log(ela.grade3.chisq), col="Grade 3 ELA")) + 
+  geom_density(aes(log(math.grade3.chisq), col = "Grade 3 Math")) + 
+  geom_density(aes(log(ela.grade5.chisq), col = "Grade 5 ELA"))+
+  geom_density(aes(log(math.grade5.chisq), col = "Grade 5 Math")) + 
+  ggtitle("Log Density of Chi-Squared Stats"),
+
+ggplot(data = elem.df) + 
+  geom_density(aes(ela.grade3.sd, col="Grade 3 ELA")) + 
+  geom_density(aes((math.grade3.sd), col = "Grade 3 Math")) + 
+  geom_density(aes((ela.grade5.sd), col = "Grade 5 ELA"))+
+  geom_density(aes((math.grade5.sd), col = "Grade 5 Math")) + 
+  ggtitle("Density of sds"),
+
+ggplot(data = elem.df) + 
+  geom_density(aes(ela.grade3.gamma.sd, col="Grade 3 ELA")) + 
+  geom_density(aes((math.grade3.gamma.sd), col = "Grade 3 Math")) + 
+  geom_density(aes((ela.grade5.gamma.sd), col = "Grade 5 ELA"))+
+  geom_density(aes((math.grade5.gamma.sd), col = "Grade 5 Math")) + 
+  xlim(c(0, 2000)) + 
+  ggtitle("Density of Gamma sds"),
+nrow = 2)
+```
+
+
+### 5.4 Spatial Autocorrelation
+
+```{r, include=F}
+inv.dists = 1 / st_distance(st_centroid(elem.df$geometry[-c(37,151,295)]))
+diag(inv.dists) = 0
+units(inv.dists) <- NULL
+
+# Yes, there is spatial autocorrelation
+Moran.I(elem.df$ela.grade3.chisq[-c(37,151,295)], inv.dists, na.rm=T) -> moran.ela.3
+Moran.I(elem.df$math.grade3.chisq[-c(37,151,295)], inv.dists, na.rm=T) -> moran.math.3
+Moran.I(elem.df$ela.grade5.chisq[-c(37,151,295)], inv.dists, na.rm=T) -> moran.ela.5
+Moran.I(elem.df$math.grade5.chisq[-c(37,151,295)], inv.dists, na.rm=T) -> moran.math.5
+```
+
+I use Moran's I (equation 6) to calculate the level of spatial auto-correlation for our reponse variables (Chi-squared statistics) of standardized test scores. Tests on both grade levels and subjects suggest a significant and positive spatial auto-correlation. This means that schools that are near each other tend to have similar proficiency level disparities. 
+
+\begin{center}
+\begin{table}[H]
+\begin{tabular}{ c c c c c }
+\hline
+\hline
+  \\
+  & Grade 3 ELA & Grade 3 Math & Grade 5 ELA & Grade 5 Math  \\ 
+\\
+ \hline \\
+  Expected & `r moran.ela.3$expected` & `r moran.math.3$expected` & `r moran.ela.5$expected`& `r moran.math.5$expected` \\
+  Observed  & `r moran.ela.3$observed` & `r moran.math.3$observed` & `r moran.ela.5$observed`& `r moran.math.5$observed` \\
+  Standard Deviation & `r moran.ela.3$sd` & `r moran.math.3$sd` & `r moran.ela.5$sd`& `r moran.math.5$sd` \\
+  P-value & `r moran.ela.3$p.value` & `r moran.math.3$p.value` & `r moran.ela.5$p.value`& `r moran.math.5$p.value` \\
+ \hline
+ \hline
+\end{tabular}
+\caption{Assessing Spatial Auto-Correlation Using Moran's I, 2019}
+\label{table:5}
+\end{table}
+\end{center}
+
+This level of auto-correlation is unsurprising given the level of income and racial segregation in the city and the strong correlation of income and race with test results. Note that median household income and race both have strong spatial auto-correlations. 
+
+```{r, include=F}
+
+# Yes, there is spatial autocorrelation
+Moran.I(elem.df$med.income[-c(37,151,295)], inv.dists, na.rm=T) -> moran.ela.3
+Moran.I(elem.df$prop.school.white[-c(37,151,295)], inv.dists, na.rm=T) -> moran.math.3
+Moran.I(elem.df$prop.school.black[-c(37,151,295)], inv.dists, na.rm=T) -> moran.ela.5
+
+```
+
+
+\begin{center}
+\begin{table}[H]
+\begin{tabular}{ c c c c }
+\hline
+\hline
+  \\
+  & Median Household Income & Proportion White Students & Proportion Black Students \\ 
+\\
+\hline \\
+  Expected & `r moran.ela.3$expected` & `r moran.math.3$expected` & `r moran.ela.5$expected` \\
+  Observed  & `r moran.ela.3$observed` & `r moran.math.3$observed` & `r moran.ela.5$observed` \\
+  Standard Deviation & `r moran.ela.3$sd` & `r moran.math.3$sd` & `r moran.ela.5$sd` \\
+  P-value & `r moran.ela.3$p.value` & `r moran.math.3$p.value` & `r moran.ela.5$p.value` \\
+ \hline
+ \hline
+\end{tabular}
+\caption{Assessing Spatial Auto-Correlation Using Moran's I, Demographics, 2019}
+\label{table:6}
+\end{table}
+\end{center}
+
+We test whether there is still spatial auto-correlation when we control for race and income by testing Moran's I for the residuals on a regression that includes race and income. 
+
+\begin{equation}
+resid = \chi^2 - (b_0 + b_1(income) + b_2(prop White) + b_3(prop White \times income))
+\end{equation}
+
+```{r, include = F}
+lm.control = lm(data=elem.df, ela.grade3.chisq ~ med.income + prop.school.white + prop.school.white*med.income) 
+summary(lm.control)
+#+ prop.school.black + prop.school.black*prop.school.white)
+Moran.I(as.vector((residuals(lm.control))), inv.dists[-231,][,-231], na.rm=T) -> moran.control
+moran.control
+```
+
+```{r, echo=F, fig.cap = "Plot of residuals for the Chi-squared statistic of 3rd grade ELA proficiency levels, accounting for race and income (equation 7)", fig.align='center'}
+elem.df$residuals = NA
+elem.df$residuals[-c(37,151,231,295)] = residuals(lm.control)
+plot.map(elem.df$residuals, "Residuals", option="magma", direction=-1)
+```
+
+Using the residuals from the regression equation above, we get a p-value of `r moran.control$p.value` from calculating Moran's I. This suggests that race and income account for most of the spatial auto-correlation. We will discuss the outliers in this plot in section 7.2.3.
+
+### 5.5 Variable Relationships
+
+In order to investigate the effect of racial and income homogeneity on elementary school performance, we must isolate the effects of these variables by controlling for potentially confounding variables or colinearity. 
+
+First, we consider the relationships between various explanatory variables. Many of these relationships are not surprising. For instance, the proportion of White residents in a neighborhood is highly correlated with the proportion of White students, with a correlation coefficient of `r round(cor(na.omit(elem.df$prop.school.white),na.omit(elem.df$prop.white)), 2)`. There are several other relationships of note. The proportion of White students and the level of median household income are both negatively correlated with the proportion of low income students in a school, while income is strongly and positively correlated with the proportion of White students in a school. This makes sense in a city where White residents have significantly higher income than residents of color. The correlation coefficient for the relationship between proportion of White residents and median household income is `r  round(cor(na.omit(elem.df$prop.school.white),na.omit(elem.df$med.income)), 2)`.
+
+Also noticeably, the proportion of White residents has a strong negative association with the size of the largest same-race group in a school. This makes sense since only `r sum(elem.df$prop.school.white > 50, na.rm=T)` of the schools have student bodies that are more than 50% White. In general, schools that have more White students are less homogeneous. 
+
+Because of the level of residential segregation by race, there is strong negative association between the proportion of Hispanic and Black students, with a correlation coefficient of `r  round(cor(na.omit(elem.df$prop.school.black),na.omit(elem.df$prop.school.hispanic)), 2)`. Schools with more Hispanic students tend to have more English learners, so the association between proportion of Hispanic students and proportion of English learners is large and positive, while the association between proportion of Black students and English learners is large and negative. 
+  
+```{r, echo=F, message=F, warning=F, fig.cap = "Investigating relationships between predictor variables"} 
+library(corrplot)
+corrplot(cor(na.omit(st_drop_geometry(elem.df))[,c("gamma.gini", 
+                   "largest.group",
+                   "race.chi.sq",
+                   "prop.school.black",
+                   "prop.school.white",
+                   "prop.school.hispanic",
+                   "prop.school.asian",
+                   "prop.white",
+                   "med.income",
+                   "prop.school.lowincome",
+                   "prop.school.EL",
+                   "home.owners")]),
+         tl.col = "Black")
+```
+
+I also analyzed the relationships between potential response variables. The variables from the interpolated gamma distribution are highly correlated with each other and with the standard deviation calculated directly from the proficiency levels. This is because the mean and standard deviation of a gamma distribution are directly proportional. 
+
+Meanwhile, the direct mean from the levels is only very weakly (cor = `r round(cor(na.omit(elem.df$ela.grade3.mean),na.omit(elem.df$ela.grade3.gamma.mean)), 2)`) associated with the mean calculated from the gamma distribution. This deeply undermines my confidence in the interpolated distribution as an appropriate measure of spread. Meanwhile, the Chi-squared statistic is not heavily associated with the mean proficiency level. The plot below also demonstrates that, as we would expect, the Chi-squared statistic for different grades and subjects are positively associated with each other. 
+
+
+
+
+```{r, echo=F, message=F, warning=F, fig.cap="Investigating relationships between response variables"}
+corrplot(cor(na.omit(st_drop_geometry(elem.df))[,c("gamma.gini", 
+                    "ela.grade3.mean",
+                    "ela.grade3.sd",
+                   "ela.grade3.gamma.mean",
+                   "ela.grade3.gamma.sd",
+                   "ela.grade3.chisq",
+                   "math.grade3.chisq",
+                   "math.grade5.chisq",
+                   "ela.grade5.chisq",
+                   "largest.group",
+                   "race.chi.sq")]),
+         tl.col = "Black")
+```
+
+## 7. Results
+
+### 7.1 Response Variable
+
+I ultimately chose to use the Chi-squared statistic as a metric for score disparties. It measures the deviation from the city-wide distribution of test scores. However, one weakness of using Chi-squared as the response variable is that it cannot distinguish between distributions of proficiency levels that are equally different from the null distribution, but indicate different levels of score spread. For instance, consider the following hypothetical sets of students in a district where the null score distribution is equal probabilities for each proficiency level:
+
+```{r, include=F}
+ex1 = c(rep(1, 1), rep(2, 2), rep(3, 3), rep(4, 4), rep(5, 5))
+ex2 = c(rep(1, 1), rep(2, 4), rep(3, 5), rep(4, 3), rep(5, 2))
+chisq.test(table(ex1), p=rep(0.2, 5))$statistic
+chisq.test(table(ex1), p=rep(0.2, 5))$statistic
+sd(ex1)
+sd(ex2)
+```
+
+\begin{center}
+\begin{table}[H]
+\begin{tabular}{ c c c c c c c c c }
+\hline
+ & \# at Level 1 & \# at Level 2 & \# at Level 3 & \# at Level 4 & \# at Level 5 & $\chi^2$ & SD & Mean \\
+ \hline
+School A & 1 & 2 & 3 & 4 & 5 & `r round(chisq.test(table(ex1), p=rep(0.2, 5))$statistic, 2)` & `r round(sd(ex1), 2)` & `r round(mean(ex1), 2)` \\
+School B & 1 & 4 & 5 & 3 & 2 & `r round(chisq.test(table(ex2), p=rep(0.2, 5))$statistic, 2)` & `r round(sd(ex2), 2)` & `r round(mean(ex2), 2)` \\
+\hline
+\end{tabular}
+\caption{Chi-Squared Example}
+\label{table:7}
+\end{table}
+\end{center}
+
+Although the total number of students are the same, and the Chi-squared statistic is the same, the distributions of proficiency levels vary significantly, and the standard deviations and means differ.
+
+Despite these limitations, we will proceed cautiously with Chi-squared as the response variable. As shown in section 5.3, the Chi-squared statistic is not normally distributed. It is roughly log-normal, so I use the log of the Chi-squared statistics as a proxy for the spread of student outcomes. 
+
+```{r, echo=F, message=F, warning=F, fig.cap = "Chi-squared density plots. For all grades and subjects, Chi-squared statistics appear to be generally log-normal"}
+
+grid_arrange_shared_legend(
+  ggplot(data = elem.df) + 
+  geom_density(aes(ela.grade3.chisq, col="Grade 3 ELA")) + 
+  geom_density(aes(math.grade3.chisq, col = "Grade 3 Math")) + 
+  geom_density(aes(ela.grade5.chisq, col = "Grade 5 ELA"))+
+  geom_density(aes(math.grade5.chisq, col = "Grade 5 Math")) +
+    labs(x = "Chi-Squared Statistic")+ 
+    theme(legend.title = element_blank()),
+  
+ggplot(data = elem.df) + 
+  geom_density(aes(log(ela.grade3.chisq), col="Grade 3 ELA")) + 
+  geom_density(aes(log(math.grade3.chisq), col = "Grade 3 Math")) + 
+  geom_density(aes(log(ela.grade5.chisq), col = "Grade 5 ELA"))+
+  geom_density(aes(log(math.grade5.chisq), col = "Grade 5 Math"))+
+    labs(x = "Log(Chi-Squared Statistic)"), nrow=1)
+```
+
+### 7.2 Modeling Score Disparities
+
+```{r, include=F}
+elem.df$prop.school.black = elem.df$prop.school.black/100
+elem.df$prop.school.lowincome = elem.df$prop.school.lowincome/100
+elem.df$med.income = elem.df$med.income/1000
+elem.df$largest.group = elem.df$largest.group/100
+
+final.model.3.ela = lm(formula = log(ela.grade3.chisq) ~ 
+                   gamma.gini + 
+                   largest.group + 
+                   prop.school.black + 
+                   med.income + 
+                   prop.school.lowincome + 
+                   prop.school.black:prop.school.lowincome + 
+                   largest.group:med.income, 
+                 data = elem.df) 
+
+other = lm(formula = (ela.grade3.gamma.sd)~
+                   gamma.gini + 
+                   largest.group + 
+                   prop.school.black + 
+                   med.income + 
+                   prop.school.lowincome + 
+                   #prop.school.EL +
+                   prop.school.black:prop.school.lowincome + 
+                   home.owners + #:med.rent +
+                   largest.group:prop.school.lowincome, 
+                 data = elem.df)
+#summary(other)
+
+final.model.3.math = lm(formula = log(math.grade3.chisq) ~ 
+                   gamma.gini + 
+                   largest.group + 
+                   prop.school.black + 
+                   med.income + 
+                   prop.school.lowincome + 
+                   prop.school.black:prop.school.lowincome + 
+                   largest.group:med.income, 
+                 data = elem.df)
+
+final.model.5.ela = lm(formula = log(ela.grade5.chisq) ~ 
+                   gamma.gini + 
+                   largest.group + 
+                   prop.school.black + 
+                   med.income + 
+                   prop.school.lowincome + 
+                   prop.school.black:prop.school.lowincome + 
+                   largest.group:med.income, 
+                 data = elem.df)
+
+final.model.5.math = lm(formula = log(math.grade5.chisq) ~ 
+                   gamma.gini + 
+                   largest.group + 
+                   prop.school.black + 
+                   med.income + 
+                   prop.school.lowincome + 
+                   prop.school.black:prop.school.lowincome + 
+                   largest.group:med.income, 
+                 data = elem.df)
+
+
+se = round(data.frame("ela.3" = summary(final.model.3.ela)$coefficients[,2],
+                "math.3" = summary(final.model.3.math)$coefficients[,2],
+                "ela.5" = summary(final.model.5.ela)$coefficients[,2],
+                "math.5" = summary(final.model.5.math)$coefficients[,2]),3)
+
+p.values = data.frame("ela.3" = summary(final.model.3.ela)$coefficients[,4],
+                "math.3" = summary(final.model.3.math)$coefficients[,4],
+                "ela.5" = summary(final.model.5.ela)$coefficients[,4],
+                "math.5" = summary(final.model.5.math)$coefficients[,4])
+
+star = function(var, i){
+  if(p.values[i,var] < 0.05){
+    return("*")
+  }
+}
+
+```
+
+```{r, include=F}
+elem.df.2009$prop.school.black = elem.df.2009$prop.school.black/100
+elem.df.2009$prop.school.lowincome = elem.df.2009$prop.school.lowincome/100
+elem.df.2009$med.income = elem.df.2009$med.income/1000
+elem.df.2009$largest.group = elem.df.2009$largest.group/100
+
+ela.3.2009 = lm(formula = log(ela.grade3.chisq) ~ 
+                   lnorm.gini + 
+                   largest.group + 
+                   prop.school.black + 
+                   med.income + 
+                   prop.school.lowincome + 
+                   prop.school.black:prop.school.lowincome + 
+                   largest.group:med.income, 
+                 data = elem.df.2009) 
+
+
+math.3.2009 = lm(formula = log(math.grade3.chisq) ~ 
+                   lnorm.gini + 
+                   largest.group + 
+                   prop.school.black + 
+                   med.income + 
+                   prop.school.lowincome + 
+                   prop.school.black:prop.school.lowincome + 
+                   largest.group:med.income, 
+                 data = elem.df.2009)
+
+ela.5.2009= lm(formula = log(ela.grade5.chisq) ~ 
+                   lnorm.gini + 
+                   largest.group + 
+                   prop.school.black + 
+                   med.income + 
+                   prop.school.lowincome + 
+                   prop.school.black:prop.school.lowincome + 
+                   largest.group:med.income, 
+                 data = elem.df.2009)
+
+math.5.2009 = lm(formula = log(math.grade5.chisq) ~ 
+                   lnorm.gini + 
+                   largest.group + 
+                   prop.school.black + 
+                   med.income + 
+                   prop.school.lowincome + 
+                   prop.school.black:prop.school.lowincome + 
+                   largest.group:med.income, 
+                 data = elem.df.2009)
+
+coefs.2009 = round(data.frame("ela.3" = summary(ela.3.2009)$coefficients[,1],
+                "math.3" = summary(math.3.2009)$coefficients[,1],
+                "ela.5" = summary(ela.5.2009)$coefficients[,1],
+                "math.5" = summary(math.5.2009)$coefficients[,1]),3)
+
+se.2009 = round(data.frame("ela.3" = summary(ela.3.2009)$coefficients[,2],
+                "math.3" = summary(math.3.2009)$coefficients[,2],
+                "ela.5" = summary(ela.5.2009)$coefficients[,2],
+                "math.5" = summary(math.5.2009)$coefficients[,2]),3)
+
+p.values.2009 = data.frame("ela.3" = summary(ela.3.2009)$coefficients[,4],
+                "math.3" = summary(math.3.2009)$coefficients[,4],
+                "ela.5" = summary(ela.5.2009)$coefficients[,4],
+                "math.5" = summary(math.5.2009)$coefficients[,4])
+
+```
+
+#### 7.2.1 The Model
+
+Finally, we fit a linear regression to quantify the influence of income inequality and school homogeneity on disparities in test scores. 
+
+\begin{equation}
+\begin{split}
+\hat{log(\chi^2)} = & b_0 + \\ &b_1 gini +  \\ & b_2 largest.group + \\ & b_3 prop.black + \\ & b_4 median.income + \\ & b_5 prop.lowincome + \\ & b_6 prop.black \times prop.lowincome + \\ & b_7 largest.group \times median.income \\
+\end{split}
+\end{equation}
+
+#### 7.2.2 Diagnostics
+
+
+These models generally satisfies the assumptions for linear regression. See the diagnostic plots below for 3rd grade ELA scores. Although there is some horizontal clustering of the residuals, there is no obvious vertical pattern, and the QQ-plot suggests that the residuals are normally distributed. I did not display the diagnostic plots for other grades and subjects, but they similarly satisfy the conditions for linear regression. There are a few outliers, which we address next.
+
+```{r, echo=F, warning=F, message=F, fig.cap="Diagnostic plots for a linear model of score disparities for 3rd grade ELA scores in 2019. The QQ-plot suggests normality for the residuals, and although there is some horizontal clustering of the residuals, there is no obvious vertical pattern."}
+autoplot(final.model.3.math)
+```
+
+#### 7.2.3 Outliers
+
+```{r, include=F, message=F, warning=F}
+lm.influence(final.model.3.ela)[[1]] -> hats
+data.frame(elem.df)[which(hats > 0.1), ]
+lm.influence(final.model.5.ela)[[1]] -> hats
+data.frame(elem.df)[which(hats > 0.1), ]
+lm.influence(final.model.3.math)[[1]] -> hats
+data.frame(elem.df)[which(hats > 0.1), ]
+lm.influence(final.model.5.math)[[1]] -> hats
+data.frame(elem.df)[which(hats > 0.1), ]
+
+data.frame(elem.df)[elem.df$ela.grade3.mean > 4.2,]
+data.frame(elem.df)[elem.df$ela.grade3.mean < 1.8,]
+```
+
+
+
+#### 7.2.4 Results
+
+Using equation 8 to model score disparities, we get the following results for the effect of various factors on the spread of scores. The table includes results for the Chi-squared statistic of proficiency levels for English language arts and math standardized test scores for third and fifth graders. 
+
+\begin{center}
+\begin{table}[H]
+\begin{tabular}{ c c c c c }
+\hline
+\hline
+  \\
+  & Grade 3 ELA & Grade 3 Math & Grade 5 ELA & Grade 5 Math \\ 
+\\
+\hline \\
+ Intercept & `r round(final.model.3.ela$coefficients[1], 3)``r star("ela.3",1)` & `r round(final.model.3.math$coefficients[1], 3)``r star("math.3",1)` & `r round(final.model.5.ela$coefficients[1], 3)``r star("ela.5",1)` & `r round(final.model.5.math$coefficients[1], 3)``r star("math.5",1)`\\
+ & (`r se$ela.3[1]`) & (`r se$math.3[1]`) &  (`r se$ela.5[1]`) & (`r se$math.5[1]`) \\
+ \\
+  Gini & `r round(final.model.3.ela$coefficients[2], 3)``r star("ela.3",2)` & `r round(final.model.3.math$coefficients[2], 3)``r star("math.3",2)` & `r round(final.model.5.ela$coefficients[2], 3)``r star("ela.5",2)` & `r round(final.model.5.math$coefficients[2], 3)``r star("math.5",2)`\\
+  & (`r se$ela.3[2]`) & (`r se$math.3[2]`) &  (`r se$ela.5[2]`) & (`r se$math.5[2]`) \\
+  \\
+  Largest Group & `r round(final.model.3.ela$coefficients[3], 3)``r star("ela.3",3)`& `r round(final.model.3.math$coefficients[3], 3)``r star("math.3",3)` & `r round(final.model.5.ela$coefficients[3], 3)``r star("ela.5",3)` & `r round(final.model.5.math$coefficients[3], 3)``r star("math.5",3)`\\
+  & (`r se$ela.3[3]`) & (`r se$math.3[3]`) &  (`r se$ela.5[3]`) & (`r se$math.5[3]`) \\
+  \\
+  Proportion Black Students &`r round(final.model.3.ela$coefficients[4], 3)``r star("ela.3",4)` & `r round(final.model.3.math$coefficients[4], 3)``r star("math.3",4)` & `r round(final.model.5.ela$coefficients[4], 3)``r star("ela.5",4)` & `r round(final.model.5.math$coefficients[4], 3)``r star("math.5",4)`\\
+  & (`r se$ela.3[4]`) & (`r se$math.3[4]`) &  (`r se$ela.5[4]`) & (`r se$math.5[4]`) \\
+  \\
+  Median Income (\$1,000s) & `r round(final.model.3.ela$coefficients[5], 3)``r star("ela.3",5)` & `r round(final.model.3.math$coefficients[5], 3)``r star("math.3",5)` & `r round(final.model.5.ela$coefficients[5], 3)``r star("ela.5",5)` & `r round(final.model.5.math$coefficients[5], 3)``r star("math.5",5)`\\
+   & (`r se$ela.3[5]`) & (`r se$math.3[5]`) &  (`r se$ela.5[5]`) & (`r se$math.5[5]`) \\
+   \\
+  Proportion of Low-Income Students & `r round(final.model.3.ela$coefficients[6], 3)``r star("ela.3",6)` & `r round(final.model.3.math$coefficients[6], 3)``r star("math.3",6)` & `r round(final.model.5.ela$coefficients[6], 3)``r star("ela.5",6)` & `r round(final.model.5.math$coefficients[6], 3)``r star("math.5",6)`\\
+   & (`r se$ela.3[6]`) & (`r se$math.3[6]`) &  (`r se$ela.5[6]`) & (`r se$math.5[6]`) \\
+   \\
+  Black Students $\times$ Low-Income & `r round(final.model.3.ela$coefficients[7], 3)``r star("ela.3",7)` & `r round(final.model.3.math$coefficients[7], 3)``r star("math.3",7)` & `r round(final.model.5.ela$coefficients[7], 3)``r star("ela.5",7)`& `r round(final.model.5.math$coefficients[7], 3)``r star("math.5",7)`\\
+   & (`r se$ela.3[7]`) & (`r se$math.3[7]`) &  (`r se$ela.5[7]`) & (`r se$math.5[7]`) \\
+   \\
+  Largest Group $\times$ Median Income & `r round(final.model.3.ela$coefficients[8], 3)``r star("ela.3",8)` & `r round(final.model.3.math$coefficients[8], 3)``r star("math.3",8)` & `r round(final.model.5.ela$coefficients[8], 3)``r star("ela.5",8)` & `r round(final.model.5.math$coefficients[8], 3)``r star("math.5",8)`\\
+   & (`r se$ela.3[8]`) & (`r se$math.3[8]`) &  (`r se$ela.5[8]`) & (`r se$math.5[8]`) \\
+
+```{r, include=F}
+coefs = coefs.2009
+p.values = p.values.2009
+se = se.2009
+```
+
+
+ \hline
+ \hline
+\end{tabular}
+\caption{Regressing Score Spreads, 2019}{* = Significant at the 0.05 level}
+\label{table:7}
+\end{table}
+\end{center}
+
+\begin{center}
+\begin{table}[H]
+\begin{tabular}{ c c c c c }
+\hline
+\hline
+  \\
+  & Grade 3 ELA & Grade 3 Math & Grade 5 ELA & Grade 5 Math \\ 
+\\
+\hline \\
+
+Intercept`r i=1`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Gini`r i=2`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Largest Group`r i=3`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Proportion of Black Students`r i=4`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Median Income`r i=5`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+
+Proportion of Low Income Students`r i=6`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+
+Black Students $\times$ Low Income `r i=7`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Largest Group $\times$ Median Income `r i=8`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+ \hline
+ \hline
+\end{tabular}
+\caption{Regressing Score Disparities, 2009}{* = Significant at the 0.05 level}
+\label{table:8}
+\end{table}
+\end{center}
+
+## 8. Discussion
+
+## 9. Conclusion
+
+## References
+
+## Appendices
+
+### Appendix A: Modeling Mean Scores
+
+```{r, include =F}
+final.model.3.ela  = lm(formula = ela.grade3.mean ~ 
+               #prop.school.white + 
+               gamma.gini + 
+               #prop.white + 
+               largest.group + 
+               prop.school.black + 
+               med.income + 
+               home.owners + 
+               prop.school.lowincome + 
+               prop.school.EL + 
+               prop.school.black:largest.group + 
+               prop.school.black:med.income, # + 
+               #prop.white:home.owners, 
+    data = elem.df)
+
+final.model.3.math = lm(formula = math.grade3.mean ~ 
+               #prop.school.white + 
+               gamma.gini + 
+               #prop.white + 
+               largest.group + 
+               prop.school.black + 
+               med.income + 
+               home.owners + 
+               prop.school.lowincome + 
+               prop.school.EL + 
+               prop.school.black:largest.group + 
+               prop.school.black:med.income, # + 
+               #prop.white:home.owners, 
+    data = elem.df)
+
+final.model.5.ela = lm(formula = ela.grade5.mean ~ 
+               #prop.school.white + 
+               gamma.gini + 
+               #prop.white + 
+               largest.group + 
+               prop.school.black + 
+               med.income + 
+               home.owners + 
+               prop.school.lowincome + 
+               prop.school.EL + 
+               prop.school.black:largest.group + 
+               prop.school.black:med.income, # + 
+               #prop.white:home.owners, 
+    data = elem.df)
+
+final.model.5.math = lm(formula = math.grade5.mean ~ 
+               #prop.school.white + 
+               gamma.gini + 
+               #prop.white + 
+               largest.group + 
+               prop.school.black + 
+               med.income + 
+               home.owners + 
+               prop.school.lowincome + 
+               prop.school.EL + 
+               prop.school.black:largest.group + 
+               prop.school.black:med.income, # + 
+               #prop.white:home.owners, 
+    data = elem.df)
+
+
+coefs = round(data.frame("ela.3" = summary(final.model.3.ela)$coefficients[,1],
+                "math.3" = summary(final.model.3.math)$coefficients[,1],
+                "ela.5" = summary(final.model.5.ela)$coefficients[,1],
+                "math.5" = summary(final.model.5.math)$coefficients[,1]),3)
+
+se = round(data.frame("ela.3" = summary(final.model.3.ela)$coefficients[,2],
+                "math.3" = summary(final.model.3.math)$coefficients[,2],
+                "ela.5" = summary(final.model.5.ela)$coefficients[,2],
+                "math.5" = summary(final.model.5.math)$coefficients[,2]),3)
+
+p.values = data.frame("ela.3" = summary(final.model.3.ela)$coefficients[,4],
+                "math.3" = summary(final.model.3.math)$coefficients[,4],
+                "ela.5" = summary(final.model.5.ela)$coefficients[,4],
+                "math.5" = summary(final.model.5.math)$coefficients[,4])
+
+```
+
+
+To investigate the effect of the same factors on the magnitude of scores, we run a similar regression with mean proficiency level as the explanatory variable. 
+
+\begin{equation}
+\begin{split}
+\hat{mean.level_s} = & b_0 + \\ & b_1 gini + \\ & b_2 prop.black + \\ & b_3 largest.group + \\ & b_4 median.income + \\ & b_5 home.owners + \\ & b_6 prop.lowincome + \\
+& b_7 prop.English.learners + \\& b_8 prop.black \times largest.group + \\
+& b_9 prop.black \times prop.lowincome \\
+\end{split}
+\end{equation}
+
+This equation yields the following results:
+
+\begin{center}
+\begin{table}[H]
+\begin{tabular}{ c c c c c }
+\hline
+\hline
+  \\
+  & Grade 3 ELA & Grade 3 Math & Grade 5 ELA & Grade 5 Math \\ 
+\\
+\hline \\
+
+Intercept`r i=1`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Gini`r i=2`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Largest Group`r i=3`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Proportion of Black Students`r i=4`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Median Income`r i=5`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Home Owners`r i=6`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Proportion of Low Income Students`r i=7`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Proportion of English Learners`r i=8`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Black Students $\times$ Largest Group `r i=9`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+Black Students $\times$ Median Income `r i=10`& `r coefs$ela.3[i]``r star("ela.3", i)` & `r coefs$math.3[i]``r star("math.3", i)` &
+`r coefs$ela.5[i]``r star("ela.5",i)` & `r coefs$math.5[i]``r star("math.5", i)` \\
+
+& (`r se$ela.3[i]`) & (`r se$math.3[i]`) & (`r se$ela.5[i]`) & (`r se$math.5[i]`) \\
+\\
+
+ \hline
+ \hline
+\end{tabular}
+\caption{Regressing Mean Scores, 2019}{* = Significant at the 0.05 level}
+\label{table:8}
+\end{table}
+\end{center}
