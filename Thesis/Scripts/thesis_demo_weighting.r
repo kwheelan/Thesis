@@ -550,7 +550,7 @@ elem.df$most.common.group[elem.df$prop.asian == max.race] = "Asian"
 
 #==================================================================================================
 
-write.csv(data.frame(st_drop_geometry(elem.df)), "C:/Users/katri/Desktop/Thesis/elem_df.csv")
+write.csv(data.frame(st_drop_geometry(elem.df)), "~/Desktop/Thesis/elem_df.csv")
 
 #=====================================================================================
 # Regressions

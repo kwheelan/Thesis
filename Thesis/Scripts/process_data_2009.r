@@ -270,7 +270,7 @@ elem.df$white.prop.difference.percent =  elem.df$ white.prop.difference / (elem.
 
 # Get income data -- to do
 
-tract.income <- get_acs(year=2019, geography = "tract", state="IL", county="Cook", geometry = TRUE,
+tract.income <- get_acs(year=2009, geography = "tract", state="IL", county="Cook", geometry = TRUE,
                         variables = c(#total = "B00001_001", 
                                       total.income = "B19001_001",
                                       income.10k = "B19001_002",
@@ -348,7 +348,7 @@ acs.income$total.income[is.na(acs.income$total.income)] <- 0
 
 # Matrix of block / block group intersections
 block_to_tract = st_within(st_transform(census2000$geometry, crs = 3488), 
-                           st_buffer(st_transform(acs.income$geometry, crs=3488), dist=50), F)
+                           st_buffer(st_transform(acs_data$geometry, crs=3488), dist=50), F)
 
 # Weight by block populations
 block_to_tract = sweep(block_to_tract, MARGIN = 1, census2000$population, '*')
@@ -359,6 +359,7 @@ block_tract_weights = sweep(block_to_tract, MARGIN = 2, pops, "*")
 
 # Apply weightings to get prop of pop at each income level for each district
 for (var in colnames(acs.income)[-(1:3)]){
+  print(var)
   elem.df[var] = block_to_elem %*% (block_tract_weights %*% as.matrix(acs.income[var]))
   if (var == "home.owners") {
     elem.df[var] = data.frame(elem.df)[var] / elem.df$home.total
@@ -418,17 +419,18 @@ income_dist = function(df, distr) {
   #  xlim(c(0, 250))
   
   #Get random series
-  res = rlnorm(as.integer(total), fitted_distr$estimate)
-  
+  if(distr == "lnorm"){
+    res = rlnorm(as.integer(total), fitted_distr$estimate)
+  } else if(distr == "gamma"){
+    res = rgamma(as.integer(total), fitted_distr$estimate)
+  }
   # Calculate Gini index and standard deviations
   return(data.frame("gini" = gini(res), "sd" = sd(res)))
 }
 
-income_dist(elem.df[1,], "lnorm") -> x
-
 
 for (i in 1:dim(elem.df)[1]){
-  #elem.df[i,c("gamma.gini","gamma.sd")] = income_dist(elem.df[i,], "gamma")
+  elem.df[i,c("gamma.gini","gamma.sd")] = income_dist(elem.df[i,], "gamma")
   elem.df[i,c("lnorm.gini","lnorm.sd")] = income_dist(elem.df[i,], "lnorm")
 }
 

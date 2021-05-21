@@ -239,8 +239,19 @@ scores = data.frame("level" = 1:5,
                     mean(tests.scores$All.students.IAR.ELA.Level.5...Grade.3, na.rm=T))
 )
 
+x=256
+x=353
+
+scores = data.frame("level" = 1:5,
+                    "prop"  = c(elem.df$All.students.IAR.ELA.Level.1...Grade.3[x], 
+                                elem.df$All.students.IAR.ELA.Level.2...Grade.3[x],
+                                elem.df$All.students.IAR.ELA.Level.3...Grade.3[x], 
+                                elem.df$All.students.IAR.ELA.Level.4...Grade.3[x], 
+                                elem.df$All.students.IAR.ELA.Level.5...Grade.3[x])
+)
+
 ggplot(data=scores, aes(x = level, y = prop)) + 
-  geom_bar(stat="identity") +
+  geom_bar(stat="identity", fill = "purple") +
   ggtitle("Overall Distribution of 3rd Grade ELA Score Levels in CPS Elementary Schools")+
   ylab("Percentage")
 

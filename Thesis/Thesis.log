@@ -1,15 +1,15 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.30)  2 MAY 2021 12:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.20)  21 MAY 2021 12:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Thesis.tex
 (./Thesis.tex
 LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-02-18> (/Users/williamsuser/Library/TinyTeX/texmf-di
+L3 programming layer <2021-05-11> (/Users/williamsuser/Library/TinyTeX/texmf-di
 st/tex/latex/base/article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-(/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+(/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
 \c@part=\count179
 \c@section=\count180
@@ -346,40 +346,44 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box49
 \@float@everytoks=\toks25
 \@floatcapt=\box50
+) (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
+\epsfxsize=\dimen162
+\epsfysize=\dimen163
+)
+(/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
 )
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-p
 dftex.def
-File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
+File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count279
 \l__pdf_internal_box=\box51
 ) (./Thesis.aux
 
 LaTeX Warning: Label `table:7' multiply defined.
 
-
-LaTeX Warning: Label `table:8' multiply defined.
-
 )
 \openout1 = `Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
 
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf
 -base.sty
@@ -392,7 +396,7 @@ sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 72.
+Package hyperref Info: Link coloring OFF on input line 60.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -405,9 +409,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count280
 )
-LaTeX Info: Redefining \ref on input line 72.
-LaTeX Info: Redefining \pageref on input line 72.
-LaTeX Info: Redefining \nameref on input line 72.
+LaTeX Info: Redefining \ref on input line 60.
+LaTeX Info: Redefining \pageref on input line 60.
+LaTeX Info: Redefining \nameref on input line 60.
 (./Thesis.out) (./Thesis.out)
 \@outlinefile=\write3
 \openout3 = `Thesis.out'.
@@ -431,12 +435,12 @@ LaTeX Info: Redefining \nameref on input line 72.
 * \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=10.0pt
+* \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=65.0pt
-* \marginparsep=11.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -446,311 +450,460 @@ LaTeX Info: Redefining \nameref on input line 72.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 7
-4.
+<Williams_College_Seal-eps-converted-to.pdf, id=132, 421.575pt x 417.56pt>
+File: Williams_College_Seal-eps-converted-to.pdf Graphic file (type pdf)
+<use Williams_College_Seal-eps-converted-to.pdf>
+Package pdftex.def Info: Williams_College_Seal-eps-converted-to.pdf  used on in
+put line 107.
+(pdftex.def)             Requested size: 75.28198pt x 74.565pt.
+[1
+
+{/Users/williamsuser/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.m
+ap} <./Williams_College_Seal-eps-converted-to.pdf>] [2] [3]
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
+74.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
-4.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
+74.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-74.
+174.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-74.
+174.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 74.
+(Font)              <12> on input line 174.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 74.
+(Font)              <8> on input line 174.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 74.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 74.
-
+(Font)              <6> on input line 174.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 174
+.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 74.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 174
+.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 98.
+(Font)              <10> on input line 174.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 98.
+(Font)              <7> on input line 174.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 98.
-[1
+(Font)              <5> on input line 174.
+[4] [5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 299--299
+[][]\T1/lmr/m/n/10 https://www.chicagotribune.com/ct-chicago-school-neighborhoo
+d-enrollment-charts-20160106-
+ []
 
-{/Users/williamsuser/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.m
-ap}] [2pdfTeX warning (ext4): destination with the same identifier (name{table.
-1}) has been already used, duplicate ignored
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 354--367
+\T1/lmr/m/n/12 50 years.\footnote{[]$https : / / inequality . stanford . edu / 
+sites / default / ^^\les / The % 20Widening %
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 354--367
+\T1/lmr/m/n/12 20Income % 20Acheivement % 20Gap % 20Between % 20the % 20Rich % 
+20and % 20The % 20Poor .
+ []
+
+[8] [9] [10] [11]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 454.
+
+Overfull \hbox (17.91577pt too wide) in paragraph at lines 454--475
+[][]
+ []
+
+[12pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.222 
-      ] [3] [4]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
-64.
-(/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [5pdfTeX warning (ext4): destination with the same identifier (name{table.2})
+l.491 
+      ] [13] [14] [15]
+</Users/williamsuser/Desktop/Thesis/Plots/HAY_panel.png, id=246, 585.18625pt x 
+1429.34pt>
+File: /Users/williamsuser/Desktop/Thesis/Plots/HAY_panel.png Graphic file (type
+ png)
+<use /Users/williamsuser/Desktop/Thesis/Plots/HAY_panel.png>
+Package pdftex.def Info: /Users/williamsuser/Desktop/Thesis/Plots/HAY_panel.png
+  used on input line 608.
+(pdftex.def)             Requested size: 252.97348pt x 617.89752pt.
+[16]
+Overfull \vbox (23.30083pt too high) has occurred while \output is active []
+
+[17pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.496 
-      ]
-<Thesis_files/figure-latex/unnamed-chunk-3-1.pdf, id=192, 459.7175pt x 315.1775
-pt>
-File: Thesis_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
-<use Thesis_files/figure-latex/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-3-1.pdf  used 
-on input line 497.
-(pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
-[6pdfTeX warning (ext4): destination with the same identifier (name{table.3}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.545   I
-          calculate a Chi-squared statistic for the distribution of <./Thesis_f
-iles/figure-latex/unnamed-chunk-3-1.pdf>]
-<Thesis_files/figure-latex/unnamed-chunk-5-1.pdf, id=206, 435.6275pt x 313.17pt
+l.614 
+       </Users/williamsuser/Desktop/Thesis/Plots/HAY_panel.png>] [18] [19] [20]
+
+Underfull \hbox (badness 1540) in paragraph at lines 818--818
+[][]\T1/lmr/m/n/10 Easterly, William, and Ross Levine. ^^PAfrica's Growth Trage
+dy: Poli-cies and Eth-nic Di-vi-
+ []
+
+<Thesis_files/figure-latex/unnamed-chunk-5-1.pdf, id=288, 435.6275pt x 313.17pt
 >
 File: Thesis_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-5-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-5-1.pdf  used 
-on input line 608.
+on input line 828.
 (pdftex.def)             Requested size: 435.62643pt x 313.16922pt.
-<Thesis_files/figure-latex/unnamed-chunk-6-1.pdf, id=207, 444.66125pt x 315.177
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 8
+44.
+(/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [21] [22pdfTeX warning (ext4): destination with the same identifier (name{fig
+ure.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.854 
+       <./Thesis_files/figure-latex/unnamed-chunk-5-1.pdf>]
+<Thesis_files/figure-latex/unnamed-chunk-6-1.pdf, id=314, 415.5525pt x 207.7762
 5pt>
 File: Thesis_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-6-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-6-1.pdf  used 
-on input line 615.
-(pdftex.def)             Requested size: 444.66016pt x 315.17673pt.
-[7] [8pdfTeX warning (ext4): destination with the same identifier (name{figure.
-1}) has been already used, duplicate ignored
+on input line 857.
+(pdftex.def)             Requested size: 415.5705pt x 207.78523pt.
+[23pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
+ has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.645 
-       <./Thesis_files/figure-latex/unnamed-chunk-5-1.pdf>] [9pdfTeX warning (e
-xt4): destination with the same identifier (name{figure.2}) has been already us
+l.887 
+       <./Thesis_files/figure-latex/unnamed-chunk-6-1.pdf>]
+<Thesis_files/figure-latex/unnamed-chunk-7-1.pdf, id=329, 351.3125pt x 206.7725
+pt>
+File: Thesis_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf)
+<use Thesis_files/figure-latex/unnamed-chunk-7-1.pdf>
+Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-7-1.pdf  used 
+on input line 892.
+(pdftex.def)             Requested size: 351.32234pt x 206.77829pt.
+[24pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
+ has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.931 
+       <./Thesis_files/figure-latex/unnamed-chunk-7-1.pdf>] [25pdfTeX warning (
+ext4): destination with the same identifier (name{table.2}) has been already us
 ed, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.645 
-       <./Thesis_files/figure-latex/unnamed-chunk-6-1.pdf>]
-<Thesis_files/figure-latex/unnamed-chunk-9-1.pdf, id=249, 295.1025pt x 313.17pt
+l.975 
+      ] [26]
+<Thesis_files/figure-latex/unnamed-chunk-9-1.pdf, id=359, 435.6275pt x 313.17pt
 >
 File: Thesis_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-9-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-9-1.pdf  used 
-on input line 650.
-(pdftex.def)             Requested size: 295.10626pt x 313.174pt.
-[10pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
- has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.657 \newpage
-               <./Thesis_files/figure-latex/unnamed-chunk-9-1.pdf>]
-<Thesis_files/figure-latex/unnamed-chunk-11-1.pdf, id=264, 435.6275pt x 313.17p
-t>
-File: Thesis_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
-<use Thesis_files/figure-latex/unnamed-chunk-11-1.pdf>
-Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-11-1.pdf  used
- on input line 669.
+on input line 1010.
 (pdftex.def)             Requested size: 435.62643pt x 313.16922pt.
-[11pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
+<Thesis_files/figure-latex/unnamed-chunk-10-1.pdf, id=360, 444.66125pt x 315.17
+75pt>
+File: Thesis_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pdf)
+<use Thesis_files/figure-latex/unnamed-chunk-10-1.pdf>
+Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-10-1.pdf  used
+ on input line 1017.
+(pdftex.def)             Requested size: 444.66016pt x 315.17673pt.
+[27pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.725 \end{center}
-                   <./Thesis_files/figure-latex/unnamed-chunk-11-1.pdf>]
-<Thesis_files/figure-latex/unnamed-chunk-13-1.pdf, id=280, 453.695pt x 313.17pt
->
+l.1023 \newpage
+                <./Thesis_files/figure-latex/unnamed-chunk-9-1.pdf>] [28pdfTeX 
+warning (ext4): destination with the same identifier (name{figure.6}) has been 
+already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.1023 \newpage
+                <./Thesis_files/figure-latex/unnamed-chunk-10-1.pdf>]
+<Thesis_files/figure-latex/unnamed-chunk-13-1.pdf, id=389, 292.09125pt x 313.17
+pt>
 File: Thesis_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-13-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-13-1.pdf  used
- on input line 741.
-(pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
-[12pdfTeX warning (ext4): destination with the same identifier (name{table.4}) 
-has been already used, duplicate ignored
+ on input line 1054.
+(pdftex.def)             Requested size: 292.09943pt x 313.17877pt.
+[29] [30pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.751 \newpage
-              ] [13pdfTeX warning (ext4): destination with the same identifier 
-(name{figure.5}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.751 \newpage
-               <./Thesis_files/figure-latex/unnamed-chunk-13-1.pdf>]
-<Thesis_files/figure-latex/unnamed-chunk-14-1.pdf, id=299, 453.695pt x 315.1775
-pt>
-File: Thesis_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (type pdf)
-<use Thesis_files/figure-latex/unnamed-chunk-14-1.pdf>
-Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-14-1.pdf  used
- on input line 766.
-(pdftex.def)             Requested size: 453.6939pt x 315.17673pt.
-[14pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
+l.1061 \newpage
+                <./Thesis_files/figure-latex/unnamed-chunk-13-1.pdf>]
+<Thesis_files/figure-latex/unnamed-chunk-15-1.pdf, id=409, 435.6275pt x 313.17p
+t>
+File: Thesis_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type pdf)
+<use Thesis_files/figure-latex/unnamed-chunk-15-1.pdf>
+Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-15-1.pdf  used
+ on input line 1073.
+(pdftex.def)             Requested size: 435.62643pt x 313.16922pt.
+[31pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.801 \end{center}
-                   <./Thesis_files/figure-latex/unnamed-chunk-14-1.pdf>]
-Overfull \hbox (16.05086pt too wide) in paragraph at lines 810--824
-[][]
- []
-
-<Thesis_files/figure-latex/unnamed-chunk-18-1.pdf, id=314, 300.12125pt x 313.17
-pt>
+l.1089 \begin{equation}
+                        <./Thesis_files/figure-latex/unnamed-chunk-15-1.pdf>] [
+32]
+<Thesis_files/figure-latex/unnamed-chunk-18-1.pdf, id=431, 453.695pt x 313.17pt
+>
 File: Thesis_files/figure-latex/unnamed-chunk-18-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-18-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-18-1.pdf  used
- on input line 839.
-(pdftex.def)             Requested size: 300.12967pt x 313.17877pt.
-[15pdfTeX warning (ext4): destination with the same identifier (name{table.5}) 
+ on input line 1169.
+(pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
+[33pdfTeX warning (ext4): destination with the same identifier (name{table.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.845 
-      pdfTeX warning (ext4): destination with the same identifier (name{table.6
-}) has been already used, duplicate ignored
+l.1179 \newpage
+               ] [34pdfTeX warning (ext4): destination with the same identifier
+ (name{figure.9}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.845 
-      ] [16pdfTeX warning (ext4): destination with the same identifier (name{fi
-gure.7}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.886 
-       <./Thesis_files/figure-latex/unnamed-chunk-18-1.pdf>]
-<Thesis_files/figure-latex/unnamed-chunk-19-1.pdf, id=337, 348.30125pt x 322.20
-375pt>
+l.1179 \newpage
+                <./Thesis_files/figure-latex/unnamed-chunk-18-1.pdf>]
+<Thesis_files/figure-latex/unnamed-chunk-19-1.pdf, id=449, 453.695pt x 315.1775
+pt>
 File: Thesis_files/figure-latex/unnamed-chunk-19-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-19-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-19-1.pdf  used
- on input line 889.
-(pdftex.def)             Requested size: 348.31633pt x 322.2177pt.
-<Thesis_files/figure-latex/unnamed-chunk-20-1.pdf, id=338, 347.2975pt x 322.203
-75pt>
-File: Thesis_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file (type pdf)
-<use Thesis_files/figure-latex/unnamed-chunk-20-1.pdf>
-Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-20-1.pdf  used
- on input line 910.
-(pdftex.def)             Requested size: 347.30724pt x 322.21278pt.
-[17pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
- has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.930 \begin{center}
-                     <./Thesis_files/figure-latex/unnamed-chunk-19-1.pdf>] [18p
-dfTeX warning (ext4): destination with the same identifier (name{figure.9}) has
- been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.930 \begin{center}
-                     <./Thesis_files/figure-latex/unnamed-chunk-20-1.pdf>]
-Overfull \hbox (12.82893pt too wide) in paragraph at lines 932--940
-[][]
- []
-
-<Thesis_files/figure-latex/unnamed-chunk-22-1.pdf, id=365, 459.7175pt x 315.177
-5pt>
-File: Thesis_files/figure-latex/unnamed-chunk-22-1.pdf Graphic file (type pdf)
-<use Thesis_files/figure-latex/unnamed-chunk-22-1.pdf>
-Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-22-1.pdf  used
- on input line 957.
-(pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
-[19pdfTeX warning (ext4): destination with the same identifier (name{table.7}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.976 \end{equation}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{figure.10}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.976 \end{equation}
-                     <./Thesis_files/figure-latex/unnamed-chunk-22-1.pdf>]
-<Thesis_files/figure-latex/unnamed-chunk-25-1.pdf, id=383, 460.72125pt x 316.18
-124pt>
-File: Thesis_files/figure-latex/unnamed-chunk-25-1.pdf Graphic file (type pdf)
-<use Thesis_files/figure-latex/unnamed-chunk-25-1.pdf>
-Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-25-1.pdf  used
- on input line 991.
-(pdftex.def)             Requested size: 460.72012pt x 316.18047pt.
-[20pdfTeX warning (ext4): destination with the same identifier (name{figure.11}
+ on input line 1194.
+(pdftex.def)             Requested size: 453.6939pt x 315.17673pt.
+[35pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1009 
-        <./Thesis_files/figure-latex/unnamed-chunk-25-1.pdf>] [21pdfTeX warning
- (ext4): destination with the same identifier (name{table.8}) has been already 
-used, duplicate ignored
+l.1209 \begin{center}
+                      <./Thesis_files/figure-latex/unnamed-chunk-19-1.pdf>]
+Overfull \hbox (32.82507pt too wide) in paragraph at lines 1211--1225
+[][]
+ []
+
+
+Overfull \hbox (92.48083pt too wide) in paragraph at lines 1237--1251
+[][]
+ []
+
+<Thesis_files/figure-latex/unnamed-chunk-23-1.pdf, id=464, 300.12125pt x 313.17
+pt>
+File: Thesis_files/figure-latex/unnamed-chunk-23-1.pdf Graphic file (type pdf)
+<use Thesis_files/figure-latex/unnamed-chunk-23-1.pdf>
+Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-23-1.pdf  used
+ on input line 1266.
+(pdftex.def)             Requested size: 300.12967pt x 313.17877pt.
+[36pdfTeX warning (ext4): destination with the same identifier (name{table.4}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1120 \end{center}
-                   ] [22pdfTeX warning (ext4): destination with the same identi
-fier (name{table.9}) has been already used, duplicate ignored
+l.1272 
+       pdfTeX warning (ext4): destination with the same identifier (name{table.
+5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1139 \begin{center}
-                     ] [23pdfTeX warning (ext4): destination with the same iden
-tifier (name{table.10}) has been already used, duplicate ignored
+l.1272 
+       ] [37pdfTeX warning (ext4): destination with the same identifier (name{f
+igure.11}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1233 \end{document}
+l.1298 
+        <./Thesis_files/figure-latex/unnamed-chunk-23-1.pdf>]
+<Thesis_files/figure-latex/unnamed-chunk-24-1.pdf, id=488, 348.30125pt x 322.20
+375pt>
+File: Thesis_files/figure-latex/unnamed-chunk-24-1.pdf Graphic file (type pdf)
+<use Thesis_files/figure-latex/unnamed-chunk-24-1.pdf>
+Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-24-1.pdf  used
+ on input line 1316.
+(pdftex.def)             Requested size: 348.31633pt x 322.2177pt.
+[38] [39pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.12}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.1337 
+        <./Thesis_files/figure-latex/unnamed-chunk-24-1.pdf>]
+<Thesis_files/figure-latex/unnamed-chunk-25-1.pdf, id=505, 347.2975pt x 322.203
+75pt>
+File: Thesis_files/figure-latex/unnamed-chunk-25-1.pdf Graphic file (type pdf)
+<use Thesis_files/figure-latex/unnamed-chunk-25-1.pdf>
+Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-25-1.pdf  used
+ on input line 1340.
+(pdftex.def)             Requested size: 347.30724pt x 322.21278pt.
+[40pdfTeX warning (ext4): destination with the same identifier (name{figure.13}
+) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.1344 \newpage
+                <./Thesis_files/figure-latex/unnamed-chunk-25-1.pdf>]
+Overfull \hbox (78.36008pt too wide) in paragraph at lines 1364--1372
+[][]
+ []
+
+<Thesis_files/figure-latex/unnamed-chunk-27-1.pdf, id=518, 459.7175pt x 315.177
+5pt>
+File: Thesis_files/figure-latex/unnamed-chunk-27-1.pdf Graphic file (type pdf)
+<use Thesis_files/figure-latex/unnamed-chunk-27-1.pdf>
+Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-27-1.pdf  used
+ on input line 1389.
+(pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
+[41pdfTeX warning (ext4): destination with the same identifier (name{table.6}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.1412 \end{equation}
+                     ] [42pdfTeX warning (ext4): destination with the same iden
+tifier (name{figure.14}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.1412 \end{equation}
+                      <./Thesis_files/figure-latex/unnamed-chunk-27-1.pdf>]
+<Thesis_files/figure-latex/unnamed-chunk-30-1.pdf, id=539, 460.72125pt x 316.18
+124pt>
+File: Thesis_files/figure-latex/unnamed-chunk-30-1.pdf Graphic file (type pdf)
+<use Thesis_files/figure-latex/unnamed-chunk-30-1.pdf>
+Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-30-1.pdf  used
+ on input line 1427.
+(pdftex.def)             Requested size: 460.72012pt x 316.18047pt.
+[43] [44pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.15}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.1445 
+        <./Thesis_files/figure-latex/unnamed-chunk-30-1.pdf>]
+Overfull \hbox (69.223pt too wide) in paragraph at lines 1448--1489
+[][]
+ []
+
+
+Overfull \hbox (69.223pt too wide) in paragraph at lines 1496--1572
+[][]
+ []
+
+[45pdfTeX warning (ext4): destination with the same identifier (name{table.7}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.1575 \end{center}
+                   ] [46pdfTeX warning (ext4): destination with the same identi
+fier (name{table.8}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.1577 \newpage
+               ]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
+586.
+(/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Underfull \hbox (badness 1694) in paragraph at lines 1622--1628
+\T1/lmr/m/n/12 Ris-ing In-equal-ity, Schools, and Chil-dren's Life Chances, edi
+ted by Greg J. Dun-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1637--1638
+[][]$\T1/lmr/m/n/12 https : / / www . jstor . org / stable / pdf / 10 . 7758 / 
+rsf . 2015 . 1 . 1 . 03 . pdf ? refreqid = excelsior %
+ []
+
+[47] [48] [49pdfTeX warning (ext4): destination with the same identifier (name{
+table.9}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.1679 \end{document}
                      ] (./Thesis.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `Thesis.out' has not changed.
-(rerunfilecheck)             Checksum: C54643BF1A7C3176D4BB0CB307AA2307;4934.
+(rerunfilecheck)             Checksum: 8C50F79F7FFA76C34F8F48083366FCB4;6199.
  ) 
 Here is how much of TeX's memory you used:
- 10244 strings out of 480954
- 151359 string characters out of 5906449
- 460370 words of memory out of 5000000
- 27151 multiletter control sequences out of 15000+600000
- 469693 words of font info for 73 fonts, out of 8000000 for 9000
+ 10537 strings out of 480796
+ 158924 string characters out of 5903520
+ 462668 words of memory out of 5000000
+ 27551 multiletter control sequences out of 15000+600000
+ 493185 words of font info for 86 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 71i,16n,74p,574b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
-{/Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/
-Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}
-{/Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.en
-c}{/Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.
-enc}</Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx1
-0.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmb
-x12.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/l
-mbx5.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/
-lmbx7.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/lm
-/lmex10.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/
-lm/lmmi10.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/publi
-c/lm/lmmi5.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/publ
-ic/lm/lmmi7.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/pub
-lic/lm/lmr10.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/pu
-blic/lm/lmr12.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/p
-ublic/lm/lmr17.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/
-public/lm/lmr5.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/
-public/lm/lmr6.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/
-public/lm/lmr7.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/
-public/lm/lmr8.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/
-public/lm/lmsy10.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type
-1/public/lm/lmsy5.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/typ
-e1/public/lm/lmsy7.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/ty
-pe1/public/lm/lmtt10.pfb>
-Output written on Thesis.pdf (23 pages, 3687470 bytes).
+ 60i,16n,63p,575b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.12} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.10} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
+, replaced by a fixed one
+
+{/Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/
+Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/U
+sers/williamsuser/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Use
+rs/williamsuser/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/U
+sers/williamsuser/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{
+/Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
+}</Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.p
+fb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx6.
+pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx8
+.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmcs
+c10.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/l
+mex10.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/lm
+/lmmi12.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public/
+lm/lmmi6.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/public
+/lm/lmmi8.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/publi
+c/lm/lmr10.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/publ
+ic/lm/lmr12.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/pub
+lic/lm/lmr6.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/pub
+lic/lm/lmr7.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/pub
+lic/lm/lmr8.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/pub
+lic/lm/lmri12.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1/p
+ublic/lm/lmsy10.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1
+/public/lm/lmsy6.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type
+1/public/lm/lmsy8.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/typ
+e1/public/lm/lmtt12.pfb>
+Output written on Thesis.pdf (49 pages, 4893430 bytes).
 PDF statistics:
- 524 PDF objects out of 1000 (max. 8388607)
- 435 compressed objects within 5 object streams
- 128 named destinations out of 1000 (max. 500000)
- 293 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 698 PDF objects out of 1000 (max. 8388607)
+ 572 compressed objects within 6 object streams
+ 163 named destinations out of 1000 (max. 500000)
+ 337 words of extra memory for PDF output out of 10000 (max. 10000000)
 
