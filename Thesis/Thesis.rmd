@@ -37,7 +37,8 @@ knitr::opts_chunk$set(echo = FALSE, warning=F, message=F, fig.pos = "H", cache=F
 \hfill\break
 
 \singlespacing
-
+by\\
+\  
 \textsc{Katrina Wheelan}%Student's Name
 
 \hfill\break
@@ -134,9 +135,9 @@ I am extremely grateful to my thesis advisors Professor Tupper and Professor Top
 \Large{\textsc{1. Introduction}}
 \end{center}
 
-Social scientists have conducted extensive research on the effects of wealth and racial disparities between districts on lifetime outcomes, but there has been comparatively little research about the relationship between classroom homogeneity and intra-school disparities in educational outcomes. In this paper, I investigate the extent to which the income and racial make-ups of schools and their neighborhoods affect the distribution of outcomes over time. I chose to focus on Chicago Public Schools because the city has a single school district and because readily available and extensive data exist. Chicago schools are also notorious for their racial homogeneity; in more than half of Chicago public elementary schools, at least 90% of the students identify as the same race.\footnote{Calculated from Illinois Board of Education Data}
+Social scientists have conducted extensive research on the effects of district-level wealth and racial disparities on educational outcomes, but there has been comparatively little research about the relationship between classroom homogeneity and intra-school disparities. In this paper, I investigate the extent to which the income and racial composition of schools and their neighborhoods predict the distribution of outcomes over time. I chose to focus on Chicago Public Schools because the city has a single school district and because readily available and extensive data exist. Chicago schools are also notorious for their racial homogeneity; in more than half of Chicago public elementary schools, at least 90% of the students identify as the same race.\footnote{Calculated from Illinois Board of Education Data}
 
-To answer these questions, I use several high dimensional data sources. I rely heavily on the Illinois Department of Education data for each public elementary school in Chicago. These data include detailed demographic data, standardized testing scores, and other indicators at the school-level. I also use American Community Survey data, which provides detailed metrics about the characteristics of each Census tract. I employ spatio-temporal methods and traditional linear methods to analyze the effects of racial and income disparities on the distribution of testing outcomes across space (school zones) and time (school years). 
+To answer these questions, I use several high dimensional data sources. I rely heavily on the Illinois Department of Education data for each public elementary school in Chicago. These data include detailed demographic data, standardized testing scores, and other indicators at the school-level. I also use American Community Survey data, which provides detailed metrics about the characteristics of each Census tract. I employ spatio-temporal methods and traditional linear methods to analyze the relationship between racial and income disparities and the distribution of testing outcomes across space (school zones) and time (school years). 
 
 \newpage
 \begin{center}
@@ -153,19 +154,19 @@ After the Great Depression, new public housing projects reinforced racial reside
 
 In the same period, “redlining,” or discriminatory lending practices, codified racial segregation and systematically denied families of color access to capital. As part of the New Deal, the Home Owners' Loan Corporation (HOLC), a government entity, began to rate residential blocks according to their creditworthiness. White homeowners feared that racial integration would cause "white flight" and send home prices plummeting. As a result, the creditworthiness classification fell closely along racial and ethnic boundaries, and residents of non-White neighborhoods generally faced more limited access to credit (Moser, 2017).
 
-Redlining also intensified and codified existing racial segregation. Aaronson et al. (2020) find that redlining significantly affected housing patterns. They find that after the creation of the HOLC maps, families of color disproportionately moved to areas with lower grades while White families disproportionately moved to higher graded areas. Given that access to credit generally fell along racial lines, redlining contributed to the growing wealth disparity between White and Black Americans in Chicago and elsewhere in urban America. This wealth disparity has persisted and grown in the twenty-first century. In 2013, White households had thirteen times the total assets of Black households, a gap that is larger than three decades earlier (Ewing, 2018: 128).
+Redlining also intensified and codified existing racial segregation. Aaronson et al. (2020) find that redlining significantly affected housing patterns. They find that after the creation of the HOLC maps, families of color disproportionately moved to areas with lower grades while White families disproportionately moved to higher graded areas. Given that access to credit generally fell along racial lines, redlining contributed to the growing wealth disparity between White and Black Americans in urban America, especially Chicago. This wealth disparity has persisted and grown in the twenty-first century. In 2013, White households had thirteen times the total assets of Black households, a gap that is larger than the gap three decades earlier (Ewing, 2018: 128).
 
 ### 2.1.2 School Segregation in Chicago
 
 Since most Chicago children attend their neighborhood schools, the high levels of residential segregation were (and are) highly correlated with high levels of school segregation. After integration efforts in the second half of the twentieth century, residential desegregation efforts have progressed more quickly than school desegregation efforts (Vigdor and Ludwig, 2008). However, the national trend toward school integration has recently stalled or reversed in some places (Vigdor and Ludwig, 2008). 
 
-In 1999, Chicago mayor Richard M. Daley announced his “Plan for Transformation.” The plan authorized the CHA to demolish almost 22,000 units of public housing, primarily in predominantly Black neighborhoods in the South Side of Chicago (Ewing, 2018: 86). This policy both displaced thousands of Black families and it did little to integrate Chicago neighborhoods. A major effect of the plan was a dramatic decrease in student enrollment for the elementary schools formerly serving the demolished housing projects (Ewing, 2018: 87). 
+In 1999, Chicago mayor Richard M. Daley announced his “Plan for Transformation.” The plan authorized the CHA to demolish almost 22,000 units of public housing, primarily in predominantly Black neighborhoods in the South Side of Chicago (Ewing, 2018: 86). This policy both displaced thousands of Black families and did little to integrate Chicago neighborhoods. A major effect of the plan was a dramatic decrease in student enrollment for the elementary schools formerly serving the demolished housing projects (Ewing, 2018: 87). 
 
-As I confirm later in the paper, Chicago neighborhoods and their local elementary schools remain highly segregated. For instance, in the typical (median) predominantly Black neighborhood in 2019, 97% of the residents were Black and 96% of the neighborhood elementary school students were Black. For Hispanic students, schools remain more segregated than neighborhoods. In the typical predominantly Hispanic neighborhood in 2019, 78% of residents were Hispanic, and 92% of neighborhood elementary school students were Hispanic.\footnote{Calculated from ISBE and Census data}
+As I confirm later in the paper, Chicago neighborhoods and their local elementary schools remain highly segregated. For instance, in the typical (median) predominantly Black neighborhood in 2019, 97% of the residents were Black and 96% of the neighborhood elementary school students were Black. Schools are generally more segregated than neighborhoods in predominantly Hispanic areas. In the typical predominantly Hispanic neighborhood in 2019, 78% of residents were Hispanic, and 92% of neighborhood elementary school students were Hispanic.\footnote{Calculated from ISBE and Census data}
 
 ### 2.1.3 History and Structure of Chicago Public Schools
 
-The Chicago Public Schools (CPS) represent a unified school district serving the entire city of Chicago. In the 2020-21 school year, CPS operated 638 schools serving 340,658 total students (CPS, 2021). Every child living in Chicago is guaranteed a slot in their neighborhood elementary school. These elementary school attendance boundaries change year-to-year, but with only slight variations.
+The Chicago Public Schools (CPS) is a unified school district serving the entire city of Chicago. In the 2020-21 school year, CPS operated 638 schools serving 340,658 total students (CPS, 2021). Every child living in Chicago is guaranteed a slot in their neighborhood elementary school. These elementary school attendance boundaries change year-to-year, but with only slight variations.
 
 In recent years, CPS has made efforts to increase school choice, opening magnet and technical schools. Although much of this effort has been targeted at high schools, magnet elementary schools and other open-enrollment elementary schools also exist. Unlike CPS high school students, the majority of CPS elementary school students attend their neighborhood school (Hing, 2016). Low-income and young students are especially likely to attend their neighborhood school given parental time and resource constraints on transportation. 
 
@@ -193,11 +194,11 @@ There may also be a link between the distribution of income and student test sco
 
 Income and racial segregation may also act jointly. For example, Kreiger et al. (2015) find significantly worse health outcomes for individuals living in areas with high indices of concentration of the extremes (ICE), a metric which captures the extremes of racial and income privilege or disadvantage. Areas that are predominantly non-White and low-income may experience what Perkins and Sampson (2015) call “compounded deprivation,” which captures the intersectional nature of poverty. Many individual and neighborhood drivers and consequences of poverty -- such as high rates of violence, low educational attainment, housing insecurity, job insecurity, low levels of local investment, and material deprivation -- interact with and exacerbate each other. Black adolescents in Chicago are significantly more likely to experience compounded deprivation than adolescents of other races in Chicago (Perkins and Sampson, 2015).
 
-Chicago neighborhoods tend to be fairly homogeneous in terms of income. Income-homogeneous neighborhoods in Chicago tend to have stable housing patterns, while “mixed middle-income” neighborhoods tend to be less stable (Sampson et al., 2015). In a study that followed 700 Chicago teenagers from 1995 to 2013, Hispanic Chicagoans were significantly more likely than White or Black Chicagoans to have exposure to mixed-income neighborhoods. This suggests that while stark economic inequality exists at the city level, many students may not be exposed to high levels of income inequality at the neighborhood or school level.
+Chicago neighborhoods tend to be fairly homogeneous in terms of income. Income-homogeneous neighborhoods in Chicago are more likely to have stable housing patterns, while “mixed middle-income” neighborhoods tend to be less stable (Sampson et al., 2015). In a study that followed 700 Chicago teenagers from 1995 to 2013, Hispanic Chicagoans were significantly more likely than White or Black Chicagoans to have exposure to mixed-income neighborhoods. This suggests that while stark economic inequality exists at the city level, many students may not be exposed to high levels of income inequality at the neighborhood or school level.
 
 ### 2.2.3 Peer Effects in the Classroom
 
-Although there has been comparatively little research conducted on the effects of homogeneity in the classroom, there is well-documented evidence of general peer effects on elementary school performance. In particular, Project STAR randomized kindergarten through third grade classrooms for more than 11,000 public school students in Tennessee and then tracked the students' outcomes. Chetty et al. (2011) find that students who were assigned to “higher quality” classrooms (with higher preforming peers) acheived short-term gains in standardized test scores. Most dramatically, the researchers found a significant association between “higher quality” classrooms and long-term outcomes, including earnings and graduation rates. These significant and long-lasting peer effects suggest that students' classmates matter in early elementary school.
+Although there has been comparatively little research conducted on the effects of homogeneity in the classroom, there is well-documented evidence of general peer effects on elementary school performance. In particular, Project STAR randomized kindergarten through third grade classrooms for more than 11,000 public school students in Tennessee and then tracked the students' outcomes. Chetty et al. (2011) find that students who were assigned to “higher quality” classrooms (with higher preforming peers) achieved significantly larger short-term gains in standardized test scores. Most dramatically, the researchers found a significant association between “higher quality” kindergarten classrooms and long-term outcomes, including earnings and graduation rates. These significant and long-lasting peer effects suggest that students' classmates matter in early elementary school.
 
 \newpage
 \begin{center}
@@ -217,7 +218,7 @@ sum(elem.df$population, na.rm=T)
 
 I combined and aggregated several sources to generate a high-dimensional dataframe containing the relevant demographic and student performance data. My final dataframe contains 96 variables across `r dim(elem.df.2009)[1]` schools in 2009 and `r dim(elem.df)[1]` schools in 2019. This represents 165,079 students in 2009 and 192,617 students in 2019, as well as 2,715,471 residents in 2009 and 2,714,595 residents in 2019.
 
-For this analysis, I focus on data from a 10 year period, comparing results from 2009 and 2019.
+For this analysis, I focus on data from a 10 year period, focusing on results from 2009 and 2019.
 I rely on several public data sources at multiple geographic levels, including the decennial Census, the American Community Survey (ACS), the Illinois State Board of Education (ISBE), and Chicago Public Schools (CPS). Table 1 details the specific data sources and their level of granularity.
 
 \begin{center}
@@ -264,7 +265,7 @@ The Illinois State Board of Education (ISBE) provides public data on annual scho
 
 The test score data include the number of students in each grade who test at each proficiency level. After the 2013-2014 academic year, Illinois transitioned from the ISAT (Illinois Standardized Assessment Test) to the PARCC (Partnership for Assessment of Readiness for College and Career), which was in turn replaced by the IAR (Illinois Assessment of Readiness) in 2019. All three exams have multiple proficiency levels, but the ISAT uses four proficiency levels, while the PARCC and IAR scores use five levels (did not meet, partially met, approached, met, and exceeded expectation).
 
-Most Chicago elementary schools limit enrollment to their elementary school boundaries, but some schools are open enrollment or "magnet" schools. Magnet schools do not have attendance boundaries, so their student body may not reflect the demographics of the neighborhood as a whole. Most elementary schools primarily serve students living in the neighborhood, but I discuss exceptions in section 6.3.
+Most Chicago elementary schools limit enrollment to their elementary school boundaries, but some schools are open enrollment or "magnet" schools. Magnet schools do not have attendance boundaries, so their student body may not reflect the demographics of the neighborhood as a whole. I discuss these schools in section 6.3.
 
 ## 3.4 Response Rates
 
@@ -285,7 +286,7 @@ I investigate the role of location, racial homogeneity, income inequality, and o
 
 ### 4.1.1 Weighting Overview 
 
-In Cook County, Illinois, there are nearly 100,000 blocks, distributed among more than 350 elementary school boundaries. Specifically, for Chicago in 2019:
+In Cook County, Illinois, there are nearly 100,000 Census blocks, distributed among more than 350 elementary school boundaries. Specifically, for Chicago in 2019:
 
 \singlespacing
 $$
@@ -395,7 +396,7 @@ However, one limitation of this method is the assumption that the area of a trac
 
 ## 4.2 Measuring Racial Homogeneity
 
-I considered three metrics to quantify racial homogeneity. First, I considered a chi-squared statistic to compare a school's racial split to the Chicago Public School overall racial split. This metric essentially quantifies a school's deviation from the null distribution, but such a deviation does not necessarily mean greater racial homogeneity. I do not ultimately use this metric in my final analysis. 
+I considered three metrics to quantify racial homogeneity. First, I considered a chi-squared statistic to compare a school's racial composition to the Chicago Public School overall racial composition. This metric essentially quantifies a school's deviation from the null distribution, but such a deviation does not necessarily mean greater racial homogeneity. I do not ultimately use this metric in my final analysis. 
 
 I also considered a second metric: the proportion of students who belong to the largest racial group in a school. This metric, lg, is rigorously defined below for school $s$ across all racial classifications $R$:
 
@@ -403,7 +404,7 @@ I also considered a second metric: the proportion of students who belong to the 
 lg_s = argmax_{i \in R}\{race.prop_{si}\}
 \end{equation}
 
-The third metric is fractionalization, which I ultimately use. This metric is defined as the probability that two students in a given school do not belong to the same racial or ethnic group. This metric was most notably used by economists Williams Easterly and Ross Levine in a 1997 study of ethnic fractionalization in Africa (Easterly et al., 1997), I adjust this metric slightly; instead, I use the probability that two random students belong to the \emph{same} racial group.
+The third metric is fractionalization, which I ultimately use. This metric is defined as the probability that two students in a given school do not belong to the same racial or ethnic group. This metric was most notably used by economists Williams Easterly and Ross Levine in a 1997 study of ethnic fractionalization in Africa (Easterly et al., 1997), I adjust this metric slightly; I use the probability that two random students belong to the \emph{same} racial group.
 
 \begin{equation}
 Frac_s = \sum_{i \in R}race.prop_{si}^2
@@ -532,7 +533,7 @@ Gini = \frac{1}{2} \cdot \frac{\text{mean difference}}{\text{arithmetic mean}} =
 \frac{\sum^n_{i=1} \sum^n_{j=1}  x_i - x_j }{2n^2 \bar{x}}
 \end{equation}
 
-Equation 4 also has a graphical equivalent in the Lorenz Curve. The Lorenz Curve shows cumulative income share of total income on the y-axis that is held by the poorest x percent of the population. A perfectly equal society would follow the line $y=x$, where, for instance, the poorest 80% of the population holds 80% of the total income. The Gini coefficient equals the area between a dataset's Lorenz curve and the line of equality (the blue area in Figure 4) divided by the total area under the line of equality (the blue and green areas together). A perfectly equal society has a Gini coefficient of 0, and a perfectly unequal society, where one individual holds all the income, has a Gini coefficient of 1 (U.S. Census Bureau, 2021).
+Equation 4 also has a graphical equivalent in the Lorenz Curve. The Lorenz Curve shows the cumulative income share on the $y$-axis held by the poorest $x$ percent of the population. A perfectly equal society would follow the line $y=x$, where, for instance, the poorest 80% of the population holds 80% of the total income. The Gini coefficient equals the area between a populations's Lorenz curve and the line of equality divided by the total area under the line of equality. In Figure 4, this is the blue area divided by the sum of the blue and green areas. A perfectly equal society has a Gini coefficient of 0, and a perfectly unequal society, where one individual holds all the income, has a Gini coefficient of 1 (U.S. Census Bureau, 2021).
 
 ```{r echo=FALSE, message=F, warning=F, fig.cap = "Lorenz Curve and Gini Coefficient. The Gini coefficient equals the area between a dataset's Lorenz curve and the line of equality (the blue area) divided by the total area under the line of equality (the blue and green areas together).", fig.height = 3, fig.width = 5, fig.align = "center"}
 
@@ -554,10 +555,12 @@ Unfortunately, the most granular standardized testing data I could analyze was a
 
 3. I calculate a chi-squared statistic for the distribution of proficiency levels, using the overall system-wide proficiency level proportions as the null distributions for each grade, year, and test subject. This metric essentially measures the deviation from the average distribution of proficiency levels.
 
-I ultimately chose to use the chi-squared statistic as a metric for score disparities. Since the proficiency level data is ordinal and non-continuous, taking the standard deviation directly is not a particularly informative metric. The interpolated gamma distribution is similarly uninformative because the limited number of options (four proficiency levels in 2009 and five in 2019) provides too little information for a smooth distribution. Unlike the first two metrics, the chi-squared statistic is designed to compare distributions across categorical data. 
+I ultimately chose to use the chi-squared statistic as a metric for score disparities. Since the proficiency level data is ordinal and non-continuous, taking the standard deviation directly is not a particularly informative metric. The interpolated gamma distribution is similarly uninformative because the limited number of bins (four in 2009 and five in 2019) provides too little information for a meaningful smooth distribution. Unlike the first two metrics, the chi-squared statistic is designed to compare distributions across categorical data. 
 
 Thus, I use the chi-squared statistic, calculated using the citywide average proficiency level distribution as the null distribution. In short, this chi-squared statistic quantifies how dissimilar a school's proficiency level distribution is from the citywide average distribution. As illustrated in Figure 5, the chi-squared statistic's distribution is approximately log-normal, so my model will use the log of the chi-squared statistic as the response variable. 
+
 \  
+
 
 ```{r, echo=F, message=F, warning=F, fig.cap = "Density plots for response variables measuring spread of student scores" }
 
@@ -596,7 +599,7 @@ nrow = 2)
 
 ### 4.4.2 Understanding the Chi-Squared Statistic
 
-The chi-squared metric captures the level of dissimilarity from the citywide average. Figure 6 illustrates two schools' distributions and their respective chi-squared statistics.
+The chi-squared metric captures the level of dissimilarity from the citywide average. Figure 6 illustrates two schools' proficiency level distributions and their respective chi-squared statistics.
 \  
 
 ```{r, echo=F, message=F, warning=F, fig.cap = "Sample distributions and their chi-squared statistics for two schools. The chi-squared statistic measures dissimilarity to the null distribution."}
@@ -740,23 +743,25 @@ ncol=2)
 grid_arrange_shared_legend(
   ggplot() +
   xlim(-87.85, -87.525) + ylim(41.65, 42.01) +
-  geom_sf(data = elem.df.2009, aes(fill = most.common.group)) + ggtitle("2009"),
+  geom_sf(data = elem.df.2009, aes(fill = most.common.group)) + ggtitle("2009")+
+  theme(legend.title = element_blank()),
 ggplot() +
   xlim(-87.85, -87.525) + ylim(41.65, 42.01) +
-  geom_sf(data = elem.df, aes(fill = most.common.group)) + ggtitle("2019"),
+  geom_sf(data = elem.df, aes(fill = most.common.group)) + ggtitle("2019") +
+  theme(legend.title = element_blank()),
 ncol=2)
 
 ```
 
 ```{r, include=F}
-mean(elem.df$prop.af.am[elem.df$most.common.group == "Black"]) -> x
+median(elem.df$prop.af.am[elem.df$most.common.group == "Black"]) -> x
 ```
 
 
 \newpage
 ## 5.2 School Demographics
 
-As a result of the stark residential segregation by race (pictured in the previous section), each neighborhood is highly homogeneous. For instance, the typical predominantly Black neighborhood is `r round(100*x,1)`\% Black. This neighborhood homogeneity spills over into the schools. In more than half of public elementary schools in Chicago, 90% of the student body identifies with the same racial/ethnic group. This effect is particularly dramatic for Black students. Although Black students only comprised about 34% of the CPS student body in 2019, more than three quarters of Black students attended a school that was at least 75% Black.
+As a result of the stark residential segregation by race (pictured in the previous section), each neighborhood is highly homogeneous. For instance, the median predominantly Black neighborhood is `r round(100*x,1)`\% Black. This neighborhood homogeneity spills over into the schools. In more than half of public elementary schools in Chicago, 90% of the student body identifies with the same racial/ethnic group. This effect is particularly dramatic for Black students. Although Black students only comprised about 34% of the CPS student body in 2019, more than three quarters of Black students attended a school that was at least 75% Black.
 
 ```{r, include=F}
 elem.df.2009$largest.group[elem.df.2009$largest.group == 0] = NA
@@ -888,7 +893,7 @@ test.prop = function(grade, subject, year, level){
 \end{center}
 
 \doublespacing
-These proficiency levels vary dramatically by school. Figure 10 shows density plots for 3rd grade math and ELA scores in 2009 and 2019. Each colored line on the plot represents a proficiency level. The density is across all schools, so the curve represents the density (y-axis) of schools having a given proportion of students (x-axis) testing at the line's proficiency level. For instance, the green line on the top, right plot shows that most schools have around 50% of its students testing at level 3 proficiency for math. The highest proficiency levels (the blue level 4 line for the 2009, and the purple level 5 line for 2019) are heavily right-skewed, which illustrates that few schools have many high preforming students. 
+These proficiency levels vary dramatically by school. Figure 11 shows density plots for 3rd grade math and ELA scores in 2009 and 2019. Each colored line on the plot represents a proficiency level. The density is across all schools, so the curve represents the density (y-axis) of schools having a given proportion of students (x-axis) testing at the line's proficiency level. For instance, the green line on the top right plot shows that most schools have around 50% of its students testing at level 3 proficiency for math. The highest proficiency levels (the blue level 4 line for the 2009, and the purple level 5 line for 2019) are heavily right-skewed, which illustrates that few schools have many high preforming students. 
 
 
 ```{r, echo=F, message=F, warning=F, fig.cap = "Density curves for proficiency levels. Each colored line on the plot represents a proficiency level. The density is across all schools, so the curve represents the density (y-axis) of schools having a given proportion of students (x-axis) testing at the line's proficiency level. For instance, the green line on the top, right plot shows that most schools have around 50% of its students testing at level 3 proficiency for math."}
@@ -1337,7 +1342,7 @@ My model links neighborhood and school characteristics, so the model expects a t
 
 I exclude elementary schools with high out-of-boundary attendance for two reasons. First, the neighborhood characteristics are not informative. If students live in many different neighborhoods, we might expect the economic inequality in the school to be far greater than the economic inequality in the school's neighborhood. Similarly, the proportion of White residents in the neighborhood does not capture the characteristics of the students' home neighborhoods. Second, out-of-district schools may select for students whose parents highly value education and have the resources to travel longer distances for drop-off and pick-up. Magnet schools in particular may select for higher preforming students, affecting the distribution of scores. 
 
-For these reasons, many of the schools with high out-of-boundary enrollment appear as outliers in section 4.5 and in the diagnostics. I decided to exclude 22 elementary schools with high out-of-boundary enrollment. Each of the excluded schools had more out-of-boundary students enrolled than in-boundary students. After omitting these 22 schools, the final model included 334 schools in 2019 and 277 in 2009.
+For these reasons, many of the schools with high out-of-boundary enrollment appear as outliers in section 4.5 and in the diagnostics. I decided to exclude 22 elementary schools with high out-of-boundary enrollment. Each of the excluded schools had more out-of-boundary students enrolled than in-boundary students. After omitting these 22 schools, the final model included 334 schools in 2019 and 377 in 2009.
 
 ## 6.4 Results
 

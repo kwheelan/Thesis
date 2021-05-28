@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.20)  22 MAY 2021 02:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.20)  28 MAY 2021 16:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -460,59 +460,59 @@ LaTeX Info: Redefining \nameref on input line 60.
 File: Williams_College_Seal-eps-converted-to.pdf Graphic file (type pdf)
 <use Williams_College_Seal-eps-converted-to.pdf>
 Package pdftex.def Info: Williams_College_Seal-eps-converted-to.pdf  used on in
-put line 107.
+put line 108.
 (pdftex.def)             Requested size: 75.28198pt x 74.565pt.
 [1
 
 {/Users/williamsuser/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.m
 ap} <./Williams_College_Seal-eps-converted-to.pdf>] [2] [3]
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-82.
+83.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-82.
+83.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-182.
+183.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-182.
+183.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 182.
+(Font)              <12> on input line 183.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 182.
+(Font)              <8> on input line 183.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 182.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 182
+(Font)              <6> on input line 183.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 183
 .
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 182
+LaTeX Font Info:    Trying to load font information for U+msb on input line 183
 .
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 182.
+(Font)              <10> on input line 183.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 182.
+(Font)              <7> on input line 183.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 182.
+(Font)              <5> on input line 183.
 [4] [5] [6] [7] [8] [9] [10]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 451.
+(Font)              <10.95> on input line 453.
 
-Overfull \hbox (17.91577pt too wide) in paragraph at lines 451--472
+Overfull \hbox (17.91577pt too wide) in paragraph at lines 453--474
 [][]
  []
 
@@ -520,7 +520,7 @@ Overfull \hbox (17.91577pt too wide) in paragraph at lines 451--472
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.488 
+l.490 
       ] [12] [13]
 </Users/williamsuser/Desktop/Thesis/Plots/HAY_panel.png, id=216, 585.18625pt x 
 1429.34pt>
@@ -528,29 +528,29 @@ File: /Users/williamsuser/Desktop/Thesis/Plots/HAY_panel.png Graphic file (type
  png)
 <use /Users/williamsuser/Desktop/Thesis/Plots/HAY_panel.png>
 Package pdftex.def Info: /Users/williamsuser/Desktop/Thesis/Plots/HAY_panel.png
-  used on input line 590.
+  used on input line 591.
 (pdftex.def)             Requested size: 239.66003pt x 585.3789pt.
 [14] [15pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.610 
+l.611 
        </Users/williamsuser/Desktop/Thesis/Plots/HAY_panel.png>] [16] [17]
 <Thesis_files/figure-latex/unnamed-chunk-5-1.pdf, id=253, 435.6275pt x 313.17pt
 >
 File: Thesis_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-5-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-5-1.pdf  used 
-on input line 762.
+on input line 764.
 (pdftex.def)             Requested size: 435.62643pt x 313.16922pt.
 [18] [19pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.775 
+l.777 
        <./Thesis_files/figure-latex/unnamed-chunk-5-1.pdf>]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
-79.
+81.
 (/Users/williamsuser/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -559,53 +559,53 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 File: Thesis_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-6-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-6-1.pdf  used 
-on input line 792.
+on input line 794.
 (pdftex.def)             Requested size: 415.5705pt x 207.78523pt.
 [20pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.805 
+l.807 
        <./Thesis_files/figure-latex/unnamed-chunk-6-1.pdf>]
 <Thesis_files/figure-latex/unnamed-chunk-7-1.pdf, id=292, 351.3125pt x 206.7725
 pt>
 File: Thesis_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-7-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-7-1.pdf  used 
-on input line 825.
+on input line 827.
 (pdftex.def)             Requested size: 351.32234pt x 206.77829pt.
 [21pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.846 
+l.848 
        <./Thesis_files/figure-latex/unnamed-chunk-7-1.pdf>] [22]
 <Thesis_files/figure-latex/unnamed-chunk-8-1.pdf, id=316, 460.72125pt x 315.177
 5pt>
 File: Thesis_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-8-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-8-1.pdf  used 
-on input line 888.
+on input line 891.
 (pdftex.def)             Requested size: 460.72012pt x 315.17673pt.
 <Thesis_files/figure-latex/unnamed-chunk-9-1.pdf, id=317, 457.71pt x 313.17pt>
 File: Thesis_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-9-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-9-1.pdf  used 
-on input line 903.
+on input line 906.
 (pdftex.def)             Requested size: 457.72285pt x 313.17877pt.
 [23pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.909 \newpage
+l.912 \newpage
                <./Thesis_files/figure-latex/unnamed-chunk-8-1.pdf>] [24pdfTeX w
 arning (ext4): destination with the same identifier (name{figure.6}) has been a
 lready used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.909 \newpage
+l.912 \newpage
                <./Thesis_files/figure-latex/unnamed-chunk-9-1.pdf>]
-Overfull \hbox (40.54866pt too wide) in paragraph at lines 925--933
+Overfull \hbox (40.54866pt too wide) in paragraph at lines 928--936
 [][]
  []
 
@@ -613,84 +613,84 @@ Overfull \hbox (40.54866pt too wide) in paragraph at lines 925--933
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.970 \end{equation}
+l.973 \end{equation}
                     ] [26]
 <Thesis_files/figure-latex/unnamed-chunk-12-1.pdf, id=358, 435.6275pt x 313.17p
 t>
 File: Thesis_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-12-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-12-1.pdf  used
- on input line 997.
+ on input line 1000.
 (pdftex.def)             Requested size: 435.62643pt x 313.16922pt.
 <Thesis_files/figure-latex/unnamed-chunk-13-1.pdf, id=359, 444.66125pt x 315.17
 75pt>
 File: Thesis_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-13-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-13-1.pdf  used
- on input line 1004.
+ on input line 1007.
 (pdftex.def)             Requested size: 444.66016pt x 315.17673pt.
 [27pdfTeX warning (ext4): destination with the same identifier (name{figure.7})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1010 \newpage
+l.1013 \newpage
                 <./Thesis_files/figure-latex/unnamed-chunk-12-1.pdf>] [28pdfTeX
  warning (ext4): destination with the same identifier (name{figure.8}) has been
  already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1010 \newpage
+l.1013 \newpage
                 <./Thesis_files/figure-latex/unnamed-chunk-13-1.pdf>]
 <Thesis_files/figure-latex/unnamed-chunk-16-1.pdf, id=388, 292.09125pt x 313.17
 pt>
 File: Thesis_files/figure-latex/unnamed-chunk-16-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-16-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-16-1.pdf  used
- on input line 1030.
+ on input line 1033.
 (pdftex.def)             Requested size: 292.09943pt x 313.17877pt.
 [29pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1046 
+l.1049 
         <./Thesis_files/figure-latex/unnamed-chunk-16-1.pdf>]
 <Thesis_files/figure-latex/unnamed-chunk-18-1.pdf, id=404, 435.6275pt x 313.17p
 t>
 File: Thesis_files/figure-latex/unnamed-chunk-18-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-18-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-18-1.pdf  used
- on input line 1057.
+ on input line 1060.
 (pdftex.def)             Requested size: 435.62643pt x 313.16922pt.
 [30pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1070 
+l.1073 
         <./Thesis_files/figure-latex/unnamed-chunk-18-1.pdf>] [31]
 <Thesis_files/figure-latex/unnamed-chunk-21-1.pdf, id=426, 453.695pt x 313.17pt
 >
 File: Thesis_files/figure-latex/unnamed-chunk-21-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-21-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-21-1.pdf  used
- on input line 1153.
+ on input line 1156.
 (pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
 [32pdfTeX warning (ext4): destination with the same identifier (name{table.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1163 \newpage
+l.1166 \newpage
                ] [33pdfTeX warning (ext4): destination with the same identifier
  (name{figure.11}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1163 \newpage
+l.1166 \newpage
                 <./Thesis_files/figure-latex/unnamed-chunk-21-1.pdf>]
-Overfull \hbox (4.8086pt too wide) in paragraph at lines 1179--1193
+Overfull \hbox (4.8086pt too wide) in paragraph at lines 1182--1196
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1209--1223
+Underfull \hbox (badness 10000) in paragraph at lines 1212--1226
 [][]
  []
 
@@ -698,25 +698,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 1209--1223
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1236 \end{equation}
+l.1239 \end{equation}
                      pdfTeX warning (ext4): destination with the same identifie
 r (name{table.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1236 \end{equation}
+l.1239 \end{equation}
                      ]
 <Thesis_files/figure-latex/unnamed-chunk-25-1.pdf, id=453, 300.12125pt x 313.17
 pt>
 File: Thesis_files/figure-latex/unnamed-chunk-25-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-25-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-25-1.pdf  used
- on input line 1240.
+ on input line 1243.
 (pdftex.def)             Requested size: 300.12967pt x 313.17877pt.
 [35pdfTeX warning (ext4): destination with the same identifier (name{figure.12}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1260 F
+l.1263 F
         irst, I consider the relationships between various explanatory <./Thesi
 s_files/figure-latex/unnamed-chunk-25-1.pdf>]
 <Thesis_files/figure-latex/unnamed-chunk-26-1.pdf, id=470, 345.29pt x 322.20375
@@ -724,46 +724,46 @@ pt>
 File: Thesis_files/figure-latex/unnamed-chunk-26-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-26-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-26-1.pdf  used
- on input line 1268.
+ on input line 1271.
 (pdftex.def)             Requested size: 345.2944pt x 322.20787pt.
 [36pdfTeX warning (ext4): destination with the same identifier (name{figure.13}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1287 
+l.1290 
         <./Thesis_files/figure-latex/unnamed-chunk-26-1.pdf>]
 <Thesis_files/figure-latex/unnamed-chunk-27-1.pdf, id=483, 344.28625pt x 322.20
 375pt>
 File: Thesis_files/figure-latex/unnamed-chunk-27-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-27-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-27-1.pdf  used
- on input line 1298.
+ on input line 1301.
 (pdftex.def)             Requested size: 344.2854pt x 322.20296pt.
 [37pdfTeX warning (ext4): destination with the same identifier (name{figure.14}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1307 
+l.1310 
         <./Thesis_files/figure-latex/unnamed-chunk-27-1.pdf>] [38]
 <Thesis_files/figure-latex/unnamed-chunk-30-1.pdf, id=501, 460.72125pt x 316.18
 124pt>
 File: Thesis_files/figure-latex/unnamed-chunk-30-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-30-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-30-1.pdf  used
- on input line 1340.
+ on input line 1343.
 (pdftex.def)             Requested size: 460.72012pt x 316.18047pt.
 [39] [40pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.15}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1355 \newpage
+l.1358 \newpage
                 <./Thesis_files/figure-latex/unnamed-chunk-30-1.pdf>]
-Overfull \hbox (14.49509pt too wide) in paragraph at lines 1397--1443
+Overfull \hbox (14.49509pt too wide) in paragraph at lines 1400--1446
 [][]
  []
 
 [41]
-Overfull \hbox (14.49509pt too wide) in paragraph at lines 1451--1528
+Overfull \hbox (14.49509pt too wide) in paragraph at lines 1454--1531
 [][]
  []
 
@@ -771,155 +771,155 @@ Overfull \hbox (14.49509pt too wide) in paragraph at lines 1451--1528
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1531 \end{center}
+l.1534 \end{center}
                    ] [43pdfTeX warning (ext4): destination with the same identi
 fier (name{table.7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1533 \newpage
+l.1536 \newpage
                ] [44] [45] [46] [47]
-Underfull \hbox (badness 10000) in paragraph at lines 1659--1662
+Underfull \hbox (badness 10000) in paragraph at lines 1662--1665
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1663--1668
+Underfull \hbox (badness 10000) in paragraph at lines 1666--1671
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1669--1671
+Underfull \hbox (badness 10000) in paragraph at lines 1672--1674
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1672--1676
+Underfull \hbox (badness 10000) in paragraph at lines 1675--1679
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1677--1682
+Underfull \hbox (badness 10000) in paragraph at lines 1680--1685
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1683--1687
+Underfull \hbox (badness 10000) in paragraph at lines 1686--1690
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1688--1691
+Underfull \hbox (badness 10000) in paragraph at lines 1691--1694
 
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 1692--1696
+Underfull \hbox (badness 1005) in paragraph at lines 1695--1699
 []\T1/lmr/m/n/12 Hing, Ge-off and Jen-nifer Smith Richards. ``Chicago School Ch
 oice in Charts.''
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1692--1696
+Underfull \hbox (badness 10000) in paragraph at lines 1695--1699
 
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 1697--1700
+Underfull \hbox (badness 1052) in paragraph at lines 1700--1703
 []\T1/lmr/m/n/12 Illinois State Board of Ed-u-ca-tion. ``RE-PORT CARD DATA LI-B
 RARY.'' 2021.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1697--1700
+Underfull \hbox (badness 10000) in paragraph at lines 1700--1703
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1701--1706
+Underfull \hbox (badness 10000) in paragraph at lines 1704--1709
 
  []
 
 
-Underfull \hbox (badness 3058) in paragraph at lines 1707--1711
+Underfull \hbox (badness 3058) in paragraph at lines 1710--1714
 \T1/lmr/m/n/12 Au-gust 22, 2017. []$https : / / www . chicagomag . com / city -
 [] life / august -[] 2017 / how -[] redlining -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1707--1711
+Underfull \hbox (badness 10000) in paragraph at lines 1710--1714
 
  []
 
 [48]
-Underfull \hbox (badness 10000) in paragraph at lines 1712--1717
+Underfull \hbox (badness 10000) in paragraph at lines 1715--1720
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1718--1723
+Underfull \hbox (badness 10000) in paragraph at lines 1721--1726
 
  []
 
 
-Underfull \hbox (badness 2261) in paragraph at lines 1724--1728
+Underfull \hbox (badness 2261) in paragraph at lines 1727--1731
 []\T1/lmr/m/n/12 RDocumentation. ``fit-dist-cens: Fit-ting of uni-vari-ate dis-
 tri-bu-tions to cen-sored
  []
 
 
-Underfull \hbox (badness 6592) in paragraph at lines 1724--1728
+Underfull \hbox (badness 6592) in paragraph at lines 1727--1731
 \T1/lmr/m/n/12 data.'' 2021. []$https : / / www . rdocumentation . org / packag
 es / ^^\tdistrplus / versions / 1 . 1 -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1724--1728
+Underfull \hbox (badness 10000) in paragraph at lines 1727--1731
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1729--1734
+Underfull \hbox (badness 10000) in paragraph at lines 1732--1737
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1735--1738
+Underfull \hbox (badness 10000) in paragraph at lines 1738--1741
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1739--1745
+Underfull \hbox (badness 10000) in paragraph at lines 1742--1748
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1746--1750
+Underfull \hbox (badness 10000) in paragraph at lines 1749--1753
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1751--1755
+Underfull \hbox (badness 10000) in paragraph at lines 1754--1758
 []$\T1/lmr/m/n/12 https : / / www . census . gov / acs / www / methodology / sa
 mple -[] size -[] and -[] data -[] quality / response -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1751--1755
+Underfull \hbox (badness 10000) in paragraph at lines 1754--1758
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1756--1759
+Underfull \hbox (badness 10000) in paragraph at lines 1759--1762
 
  []
 
 [49]
-Overfull \hbox (14.49509pt too wide) in paragraph at lines 1776--1853
+Overfull \hbox (14.49509pt too wide) in paragraph at lines 1779--1856
 [][]
  []
 
 
-Overfull \hbox (14.49509pt too wide) in paragraph at lines 1861--1938
+Overfull \hbox (14.49509pt too wide) in paragraph at lines 1864--1941
 [][]
  []
 
@@ -927,12 +927,12 @@ Overfull \hbox (14.49509pt too wide) in paragraph at lines 1861--1938
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1941 \end{center}
+l.1944 \end{center}
                    ] [51pdfTeX warning (ext4): destination with the same identi
 fier (name{table.9}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.1943 \end{document}
+l.1946 \end{document}
                      ] (./Thesis.aux)
 
 LaTeX Warning: There were multiply-defined labels.
@@ -981,7 +981,7 @@ ublic/lm/lmri12.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/type1
 e1/public/lm/lmsy6.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/ty
 pe1/public/lm/lmsy8.pfb></Users/williamsuser/Library/TinyTeX/texmf-dist/fonts/t
 ype1/public/lm/lmtt12.pfb>
-Output written on Thesis.pdf (51 pages, 4860636 bytes).
+Output written on Thesis.pdf (51 pages, 4860740 bytes).
 PDF statistics:
  694 PDF objects out of 1000 (max. 8388607)
  566 compressed objects within 6 object streams
